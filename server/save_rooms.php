@@ -3,13 +3,14 @@
 ini_set('html_errors', false);
 $method = $_SERVER['REQUEST_METHOD'];
 
-
 if($method == 'GET'){
     $id_room = array();
     $room_id = array();
     $room_data = json_decode(file_get_contents('data/Sample_TEST_2.json'));
+    $column_index = array_search("ID",$room_data -> columns);
     foreach ($room_data -> data as $value){
-        $id_room[] = $value[0];
+//        $id_room[] = $value[0];
+        $id_room[] = $value[$column_index];
     }
     $room_ip_id = json_decode(file_get_contents('data/ip_room.json'));
 
@@ -49,6 +50,16 @@ function roomSort($v1, $v2){
     if($v1->ID < $v2->ID) return -1;
     elseif ($v1->ID > $v2->ID) return 1;
     else return 0;
+}
+
+function getColumnIndexByID($room_id, $data){
+
+    return array_search($data -> columns,$room_id);
+
+//    foreach ($data -> columns as $value){
+//        if($value == $room_id) return $value;
+//    }
+//    return 0;
 }
 
 ?>

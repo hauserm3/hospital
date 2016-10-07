@@ -102,12 +102,13 @@ export class IconsManager implements OnInit {
         });
     }
     onDeleteItemClick(item:VOIcon){
-        this.roomsService.deleteIcon(item).subscribe((res:VOResult)=>{
-            // this.getIcons();
-            item.iconPath = item.iconPath + "?" + Date.now();
-            console.log(res);
-        });
-
+        if(confirm('You want to delete icon "'+item.label+'"?')){
+            this.roomsService.deleteIcon(item).subscribe((res:VOResult)=>{
+                // this.getIcons();
+                item.iconPath = item.iconPath + "?" + Date.now();
+                console.log(res);
+            });
+        }
     }
     getIcons(){
         this.roomsService.getIcons().subscribe(res=>{

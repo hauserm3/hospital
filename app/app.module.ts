@@ -25,10 +25,10 @@ const routes: Route[] = [
         path: 'icons-manager',
         component:IconsManager
     }
-    // ,{
-    //     path: '**',
-    //     component: IconsManager
-    // }
+    ,{
+        path: '**',
+        component: IconsManager
+    }
 ];
 
 
@@ -43,8 +43,8 @@ const routes: Route[] = [
   declarations: [ AppComponent, AdminPanel, IconsManager ],
     providers:[
         RoomsService,
-        UploadService
-        // { provide: LocationStrategy, useClass: HashLocationStrategy}
+        UploadService,
+        { provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
   bootstrap: [ AppComponent ]
 })

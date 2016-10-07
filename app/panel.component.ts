@@ -163,18 +163,22 @@ export class AdminPanel implements OnInit {
     }
     onDeleteClick(){
         if(!this.currentItem) return;
-        this.toolsDisadled = true;
-        this.roomsService.deleteRoom(this.currentItem).subscribe((res:VOResult)=>{
-            this.getData();
-            console.log(res);
-        });
+        if(confirm('You want to delete ip "'+this.currentItem.IP+'"?')) {
+            this.toolsDisadled = true;
+            this.roomsService.deleteRoom(this.currentItem).subscribe((res: VOResult)=> {
+                this.getData();
+                console.log(res);
+            });
+        }
     }
     onDeleteItemClick(item:VOIpRoom){
-        this.toolsDisadled = true;
-        this.roomsService.deleteRoom(item).subscribe((res:VOResult)=>{
-            this.getData();
-            console.log(res);
-        });
+        if(confirm('You want to delete ip "'+item.IP+'"?')) {
+            this.toolsDisadled = true;
+            this.roomsService.deleteRoom(item).subscribe((res: VOResult)=> {
+                this.getData();
+                console.log(res);
+            });
+        }
     }
     getData(){
         this.roomsService.getRooms().subscribe(res=>{

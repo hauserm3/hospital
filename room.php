@@ -47,7 +47,7 @@ function getRoomIdByIP($room_ip, $arr){
 <html>
   <head>
     <title>Admin panel</title>
-      <base href="/room/">
+<!--      <base href="/room/">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
