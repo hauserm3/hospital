@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import './rxjs-operators';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {VOIpRoom, RoomsService, VOIp_Rooms, VOResult, VOIcons, VOIcon} from "./rooms-service";
+import {VOIpRoom, RoomsService, VOIp_Rooms, VOResult, VOIcons, VOIcon} from "../rooms-service";
 import {UploadService} from "./upload-service";
 
 @Component({

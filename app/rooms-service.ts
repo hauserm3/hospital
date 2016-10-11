@@ -28,6 +28,13 @@ export class RoomsService{
         });
     }
 
+    getRoom():Observable<VORoom>{
+        return this.http.get('server/get-my-room.php?room_id='+1).map((res:any)=>{
+            // console.log('res', res);
+            return new VORoom(res.json());
+        });
+    }
+
     getIcons():Observable<VOIcons>{
         return this.http.get('server/get_icons.php').map((res:any)=>{
             return new VOIcons(res.json());
@@ -125,6 +132,38 @@ export class VOIcons{
         // this.icons = obj.map(function (item) {
         //     return new VOIcon(item);
         // });
+    }
+}
+
+export class VORoom {
+    IP: string;
+    ID: number;
+    BedName: string;
+    Patientname: string;
+    FallRisk: string;
+    FallRisk_f: string;
+    FallRisk_i: string;
+    AllergyMed: string;
+    AllergyMed_f: string;
+    AllergyMed_i: string;
+    AllergyLatex: string;
+    AllergyLatex_f: string;
+    AllergyLatex_i: string;
+    AllergyFood: string;
+    AllergyFood_f: string;
+    AllergyFood_i: string;
+    AllergySubstance: string;
+    AllergySubstance_f: string;
+    AllergySubstance_i: string;
+    HazardousMed: string;
+    HazardousMed_f: string;
+    HazardousMed_i: string;
+    InfectionControl: string;
+    InfectionControl_f: string;
+    InfectionControl_i: string;
+
+    constructor (obj:any) {
+        for (var str in obj)this[str] = obj[str];
     }
 }
 

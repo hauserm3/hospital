@@ -1,8 +1,8 @@
-///<reference path="../typings/jquery.d.ts"/>
+///<reference path="../../typings/jquery.d.ts"/>
 
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {VOResult} from "./rooms-service";
+import {VOResult} from "../rooms-service";
 
 
 @Injectable()

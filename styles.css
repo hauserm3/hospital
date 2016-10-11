@@ -232,6 +232,10 @@ td > img{
     max-height: 64px;
     max-width: 64px;
 }
+div.img_64 img{
+    max-height: 64px;
+    max-width: 64px;
+}
 /*td > span{*/
 /*font-weight: 600;*/
 /*}*/
