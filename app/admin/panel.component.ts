@@ -28,7 +28,7 @@ import {VOIpRoom, RoomsService, VOIp_Rooms, VOResult} from "../rooms-service";
             </div>
             <div class="row m-top">
                 <div class="col-xs-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default psh pb">
                         <div class="panel-body">
                             <table class="table table-condensed table-striped">
                                 <thead>

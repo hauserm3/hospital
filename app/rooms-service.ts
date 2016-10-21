@@ -163,8 +163,23 @@ export class VORoom {
     InfectionControl_i: string;
 
     constructor (obj:any) {
-        for (var str in obj)this[str] = obj[str];
+        for (var str in obj) this[str] = obj[str];
     }
+}
+
+export class VORoom2 {
+    IP: string;
+    ID: number;
+    BedName: string;
+    FallRisk: string;
+    HazardousMed: string;
+    InfectionControl: any;
+    Precautions: any;
+
+    constructor (obj:any) {
+        for (var str in obj) this[str] = obj[str];
+    }
+
 }
 
 export class VOResult {

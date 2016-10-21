@@ -3,7 +3,7 @@ import {Component, OnInit, NgZone} from '@angular/core';
 import './rxjs-operators';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {RoomsService, VORoom} from "../rooms-service";
+import {RoomsService, VORoom, VORoom2} from "../rooms-service";
 
 
 @Component({
@@ -32,9 +32,9 @@ import {RoomsService, VORoom} from "../rooms-service";
                             <div class="panel panel-primary psh">
                                 <div class="panel-heading text-center">Caution / Attention</div>
                                 <div class="panel-body">
-                                    <div class="row-fluid img_64">
+                                    <div class="row-fluid img_64" *ngIf="room.FallRisk != 'FALSE'">
                                         <div class="col-md-4 text-center">
-                                            <img src="{{room.FallRisk_i}}">
+                                            <img src="app/icons/{{room.FallRisk}}">
                                             <label>Fall Risk chutes du risque</label>
                                         </div>
                                     </div>
@@ -42,7 +42,7 @@ import {RoomsService, VORoom} from "../rooms-service";
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" *ngIf="room.InfectionControl != 'FALSE'">
                         <div class="col-md-12">
                             <div class="panel panel-danger psh">
                                 <div class="panel-heading text-center">Contact Precautions / Precautions de Contact</div>
@@ -64,8 +64,15 @@ import {RoomsService, VORoom} from "../rooms-service";
                                         <h4>IN ADDITION TO ROUTINE PRACTICES PLEASE USE:/EN PLUS DES PRATIQUES DE ROUTINE UTILISEZ S'IL VOUS PLAIT:</h4>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        
+                                    <div class="row img_64" *ngIf="InfectionControlArray">
+                                        <div class="col-md-1" *ngFor="let item of room.InfectionControl.Precautions">
+                                            <img src="app/icons/{{item}}">
+                                        </div>
+                                    </div>
+                                    <div class="row img_64" *ngIf="!InfectionControlArray">
+                                        <div class="col-md-1">
+                                            <img src="app/icons/{{room.InfectionControl.Precautions}}">
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <h5><strong class="text-danger">Personal Protective Equipement available in the cabinet outside patient/client room.</strong></h5>
@@ -75,7 +82,7 @@ import {RoomsService, VORoom} from "../rooms-service";
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" *ngIf="room.HazardousMed != 'FALSE'">
                         <div class="col-md-12">
                             <div class="panel panel-warning text-center psh">
                                 <div class="panel-heading">Hazardous Medications / Medicaments Dangereux</div>
@@ -109,8 +116,9 @@ import {RoomsService, VORoom} from "../rooms-service";
 export class RoomComponent implements OnInit {
     IP: string;
     ID: number;
+    InfectionControlArray:boolean;
 
-    room: VORoom = new VORoom({});
+    room: VORoom2 = new VORoom2({});
 
     response:any;
 
@@ -123,7 +131,10 @@ export class RoomComponent implements OnInit {
         private _ngZone: NgZone,
         private roomsService:RoomsService
     ) {
-        this.room = JSON.parse($room_json); console.log('room_json', this.room);
+        this.room = JSON.parse($room_json);
+        console.log('room', this.room);
+        this.InfectionControlArray = Array.isArray(this.room.InfectionControl.Precautions);
+        console.log('arr', Array.isArray(this.room.InfectionControl.Precautions));
         // console.log('$room_json ', $room_json);
         //zone -> $room_json
     }
