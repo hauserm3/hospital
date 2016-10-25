@@ -41,6 +41,12 @@ export class RoomsService{
         });
     }
 
+    getIcons3():Observable<VOIcons>{
+        return this.http.get('server/get_icons3.php').map((res:any)=>{
+            return new VOIcons(res.json());
+        });
+    }
+
     saveRooms(data:VOIp_Rooms):Observable<VOResult>{
         return this.http.post('server/save_rooms.php',data).map((res:any)=>{
             return new VOResult(res.json());
@@ -109,7 +115,8 @@ export class VOIp_Rooms {
 }
 
 export class VOIcon{
-    label: string;
+    label_en: string;
+    label_fr: string;
     filename: string;
     iconPath: string;
     selected: boolean;
@@ -175,6 +182,24 @@ export class VORoom2 {
     HazardousMed: string;
     InfectionControl: any;
     Precautions: any;
+
+    constructor (obj:any) {
+        for (var str in obj) this[str] = obj[str];
+    }
+
+}
+
+export class VORoom3 {
+    IP: string;
+    ID: number;
+    Date: string;
+    BED: {Name: string};
+    RoutinePractices: {Image: any};
+    CautionAttention: {Image: any};
+    HazardousMedications: {Image: any};
+    ContactPrecautions: {Image: any};
+    CP_label_en: string[];
+    CP_label_fr: string[];
 
     constructor (obj:any) {
         for (var str in obj) this[str] = obj[str];
