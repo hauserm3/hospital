@@ -89,6 +89,40 @@ export class RoomsService{
         this.selectedIconSubject.next(item);
         // console.log('selectItem ', this.selectedICon);
     }
+
+    setIconsLabel(room:VORoom3,icons:VOIcon[]){
+
+        if('RoutinePractices' in room){
+            icons.forEach(function (item) {
+                if(item.filename == room.RoutinePractices){
+                    room.RP_label_en = item.label_en;
+                    room.RP_label_fr = item.label_fr;
+                }
+            })
+        }
+
+        if('CautionAttention' in room){
+            icons.forEach(function (item) {
+                if(item.filename == room.CautionAttention) {
+                    room.CA_label_en = item.label_en;
+                    room.CA_label_fr = item.label_fr;
+                }
+            })
+        }
+
+        if('ContactPrecautions' in room){
+            room.CP_label_en = [];
+            room.CP_label_fr = [];
+            icons.forEach(function (item) {
+                room.ContactPrecautions.forEach(function (value,i) {
+                    if(item.filename == value) {
+                        room.CP_label_en[i] = item.label_en;
+                        room.CP_label_fr[i] = item.label_fr;
+                    }
+                })
+            })
+        }
+    }
 }
 
 export class VOIpRoom {
@@ -193,11 +227,15 @@ export class VORoom3 {
     IP: string;
     ID: number;
     Date: string;
-    BED: {Name: string};
-    RoutinePractices: {Image: any};
-    CautionAttention: {Image: any};
-    HazardousMedications: {Image: any};
-    ContactPrecautions: {Image: any};
+    BedName: string;
+    RoutinePractices: string;
+    RP_label_en: string;
+    RP_label_fr: string;
+    CautionAttention: string;
+    CA_label_en: string;
+    CA_label_fr: string;
+    HazardousMedications: boolean;
+    ContactPrecautions: string[];
     CP_label_en: string[];
     CP_label_fr: string[];
 

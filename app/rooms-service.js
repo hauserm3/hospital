@@ -82,6 +82,36 @@ var RoomsService = (function () {
         this.selectedIconSubject.next(item);
         // console.log('selectItem ', this.selectedICon);
     };
+    RoomsService.prototype.setIconsLabel = function (room, icons) {
+        if ('RoutinePractices' in room) {
+            icons.forEach(function (item) {
+                if (item.filename == room.RoutinePractices) {
+                    room.RP_label_en = item.label_en;
+                    room.RP_label_fr = item.label_fr;
+                }
+            });
+        }
+        if ('CautionAttention' in room) {
+            icons.forEach(function (item) {
+                if (item.filename == room.CautionAttention) {
+                    room.CA_label_en = item.label_en;
+                    room.CA_label_fr = item.label_fr;
+                }
+            });
+        }
+        if ('ContactPrecautions' in room) {
+            room.CP_label_en = [];
+            room.CP_label_fr = [];
+            icons.forEach(function (item) {
+                room.ContactPrecautions.forEach(function (value, i) {
+                    if (item.filename == value) {
+                        room.CP_label_en[i] = item.label_en;
+                        room.CP_label_fr[i] = item.label_fr;
+                    }
+                });
+            });
+        }
+    };
     RoomsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

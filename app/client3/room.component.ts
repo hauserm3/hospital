@@ -33,18 +33,18 @@ import {RoomsService, VORoom, VORoom3, VOIcon} from "../rooms-service";
                             <div class="panel panel-primary psh">
                                 <div class="panel-heading text-center">Caution / Attention</div>
                                 <div class="panel-body">
-                                    <div class="row-fluid img_64" *ngIf="room.CautionAttention.Image != 'FALSE'">
+                                    <div class="row-fluid img_64" *ngIf="room.CautionAttention">
                                         <div class="col-md-4 text-center">
-                                            <img src="app/icons/{{room.CautionAttention.Image}}">
-                                            <div><strong>Fall Risk</strong></div>
-                                            <div><strong>Chutes du risque</strong></div>
+                                            <img src="app/icons/{{room.CautionAttention}}">
+                                            <div><strong>{{room.CA_label_en}}</strong></div>
+                                            <div><strong>{{room.CA_label_fr}}</strong></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row" *ngIf="room.ContactPrecautions.Image != 'FALSE'">
+                    <div class="row" *ngIf="room.ContactPrecautions">
                         <div class="col-md-12">
                             <div class="panel panel-danger psh">
                                 <div class="panel-heading text-center">Contact Precautions / Précautions de Contact</div>
@@ -66,21 +66,33 @@ import {RoomsService, VORoom, VORoom3, VOIcon} from "../rooms-service";
                                         <h4>IN ADDITION TO ROUTINE PRACTICES PLEASE USE:/EN PLUS DES PRATIQUES DE ROUTINE UTILISEZ S'IL VOUS PLAÎT:</h4>
                                         </div>
                                     </div>
-                                    <div class="row img_64" *ngIf="ContactPrecautionsArray">
+                                    <div class="row img_64">
                                     <div class="col-md-1"></div>
-                                        <div class="col-md-2" *ngFor="let item of room.ContactPrecautions.Image">
+                                        <div class="col-md-2" *ngFor="let item of room.ContactPrecautions; let i=index" >
                                             <img src="app/icons/{{item}}">
-                                            <div><strong>Hand Hygiene Required</strong></div>
-                                            <div><strong>Hand Hygiene Required</strong></div>
+                                            <!--<div><strong>{{room.CP_label_en[i]}}</strong></div>-->
+                                            <!--<div><strong>{{room.CP_label_fr[i]}}</strong></div>-->
                                         </div>
                                     </div>
-                                    <div class="row img_64" *ngIf="!ContactPrecautionsArray">
-                                        <div class="col-md-4 col-md-offset-4">
-                                            <img src="app/icons/{{room.ContactPrecautions.Image}}">
-                                            <div><strong>Hand Hygiene Required</strong></div>
-                                            <div><strong>Hand Hygiene Required</strong></div>
+                                    <div class="row">
+                                    <div class="col-md-1"></div>
+                                        <div class="col-md-2" *ngFor="let item of room.CP_label_en" >
+                                            <div><strong>{{item}}</strong></div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                    <div class="col-md-1"></div>
+                                        <div class="col-md-2" *ngFor="let item of room.CP_label_fr" >
+                                            <div><strong>{{item}}</strong></div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="row img_64" *ngIf="!ContactPrecautionsArray">-->
+                                        <!--<div class="col-md-4 col-md-offset-4">-->
+                                            <!--<img src="app/icons/{{room.ContactPrecautions.Image}}">-->
+                                            <!--<div><strong>Hand Hygiene Required</strong></div>-->
+                                            <!--<div><strong>Hand Hygiene Required</strong></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                     <div class="row">
                                         <h5><strong class="text-danger">Personal Protective Equipement available in the cabinet outside patient/client room.</strong></h5>
                                         <h5><strong class="text-danger">Protection individuelle Equipement disponible dans l'armoire à l'extérieur la chambre du patient / client.</strong></h5>
@@ -89,7 +101,7 @@ import {RoomsService, VORoom, VORoom3, VOIcon} from "../rooms-service";
                             </div>
                         </div>
                     </div>
-                    <div class="row" *ngIf="room.HazardousMedications != 'FALSE'">
+                    <div class="row" *ngIf="room.HazardousMedications">
                         <div class="col-md-12">
                             <div class="panel panel-warning text-center psh">
                                 <div class="panel-heading">Hazardous Medications / Médicaments Dangereux</div>
@@ -139,20 +151,21 @@ export class RoomComponent implements OnInit {
         private _ngZone: NgZone,
         private roomsService:RoomsService
     ) {
+        this.room = JSON.parse($room_json);
         this.roomsService.getIcons3().subscribe(res=>{
             this.icons = res.icons;
+            console.log('this.icons', this.icons);
+            this.roomsService.setIconsLabel(this.room,this.icons);
         });
-        this.room = JSON.parse($room_json);
-        console.log('room', this.room.BED);
-        this.ContactPrecautionsArray = Array.isArray(this.room.ContactPrecautions.Image);
-        // if(this.ContactPrecautionsArray){
-        //     console.log('arr', Array.isArray(this.room.ContactPrecautions.Image));
-        //     this.room.ContactPrecautions.Image.forEach(()=>{
-        //         this.icons.forEach(()=>{
-        //
-        //         });
-        //     });
-        // }
+
+        // this.roomsService.setIconsLabel(this.room,this.icons).subscribe(res=>{
+        //     this.room = res.room;
+        //     console.log('room', this.icons);
+        // });
+
+        // this.roomsService.setIconsLabel(this.room,this.icons);
+
+        console.log('this.room', this.room);
 
         // console.log('$room_json ', $room_json);
         //zone -> $room_json

@@ -43,6 +43,33 @@ function saveDataJSON($filepath, $dataJSON){
     fclose($fp);
 }
 
+function parseRooms($rooms_arr){
+    $rooms = array();
+    foreach ($rooms_arr as $value){
+        $room = new stdClass();
+        $room -> ID = $value['ID'];
+        $room -> Date = $value['Date'];
+        $room -> BedName = $value['BED']['Name'];
+        $room -> RoutinePractices = $value['RoutinePractices']['Image'];
+        if(array_key_exists('Image',$value['CautionAttention']) && $value['CautionAttention']['Image'] != 'FALSE'){
+            $room -> CautionAttention = $value['CautionAttention']['Image'];
+        }
+        if($value['HazardousMedications']['Image'] != 'FALSE'){
+            $room -> HazardousMedications = true;
+        }
+        if($value['ContactPrecautions']['Image'] != 'FALSE'){
+            if(is_array($value['ContactPrecautions']['Image'])){
+                $room -> ContactPrecautions = $value['ContactPrecautions']['Image'];
+            } else {
+                $room -> ContactPrecautions = (array) $value['ContactPrecautions']['Image'];
+            }
+        }
+        $rooms[]=$room;
+    }
+//    echo json_encode($rooms);
+    return $rooms;
+}
+
 function saveRooms($rooms_arr,$file_rooms){
     $rooms = new stdClass();
     $rooms -> rooms = $rooms_arr;
@@ -135,9 +162,11 @@ $main_arr["data"] = $data;
 $iconsName = getIconsName($data);
 $iconsFileName = getIconsFilename($iconsName);
 
-//saveRooms($rowData,$file_rooms);
+parseRooms($rowData_2);
 
-saveRooms($rowData_2,$file_rooms_3);
+saveRooms(parseRooms($rowData_2),$file_rooms_3);
+
+//saveRooms($rowData_2,$file_rooms_3);
 
 saveIcons($iconsName,$iconsFileName);
 
