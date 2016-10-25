@@ -103,7 +103,7 @@ export class IconsManager implements OnInit {
         });
     }
     onDeleteItemClick(item:VOIcon){
-        if(confirm('You want to delete icon "'+item.label+'"?')){
+        if(confirm('You want to delete icon "'+item.label_en+'"?')){
             this.roomsService.deleteIcon(item).subscribe((res:VOResult)=>{
                 // this.getIcons();
                 item.iconPath = item.iconPath + "?" + Date.now();
