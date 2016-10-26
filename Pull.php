@@ -7,7 +7,7 @@ $log ="\n\r".date("Y-m-d h:i:s")."\n\r";
 //$log .= file_get_contents('php://input');
 $log .= shell_exec('git fetch 2>&1');
 sleep(5);
-$log .= shell_exec('git reset --hard origin/master 2>&1');
+//$log .= shell_exec('git reset --hard origin/master 2>&1');
 //$log .= shell_exec('git reset --hard HEAD 2>&1');
 sleep(2);
 $log .= "end fetch ";
