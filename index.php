@@ -24,6 +24,10 @@ if($room) {
 //    $room_json = json_encode(setIcon($room_json,$icons));
     $room_json = json_encode($room);
 //    echo json_encode($room_json);
+} else {
+    $room_id = 1;
+    $room = getDataByID($room_id, $main_arr);
+    $room_json = json_encode($room);
 }
 
 function getDataByID($room_id, $data){
