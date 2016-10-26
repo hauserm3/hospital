@@ -57,7 +57,7 @@ function setIcon($room_json, $icons){
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Client</title>
+    <title>Hospital Client</title>
 <!--      <base href="/room/">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
