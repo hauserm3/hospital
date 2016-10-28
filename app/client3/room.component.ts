@@ -36,7 +36,7 @@ import {RoomsService, VORoom, VORoom3, VOIcon} from "../rooms-service";
                                     <div class="row-fluid img_64" *ngIf="room.CautionAttention">
                                         <div class="col-md-4 text-center">
                                             <img src="app/icons/{{room.CautionAttention}}">
-                                            <div><strong>{{room.CA_label_en}}</strong></div>
+                                            <div><strong id="roomCAlabel_en">{{room.CA_label_en}}</strong></div>
                                             <div><strong>{{room.CA_label_fr}}</strong></div>
                                         </div>
                                     </div>

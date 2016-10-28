@@ -1,9 +1,9 @@
 <?php
-echo $_SESSION['user_id'];
-if(!isset($_SESSION['user_id'])){
-    header('Location: login.php');
-    exit();
-}
+//session_start();
+//if(!isset($_SESSION['user_id']) || $_SESSION['user_id']==0){
+//    header('Location: login.php');
+//    exit();
+//}
 ?>
 
 <!DOCTYPE html>
@@ -35,5 +35,22 @@ if(!isset($_SESSION['user_id'])){
 
   <body>
     <my-admin>Loading...</my-admin>
+
+<!--  <script>-->
+<!--      $(document).ready(function () {-->
+<!--          var currentModel;-->
+<!---->
+<!--          var gedData = function () {-->
+<!--              $.getJSON(url).done(function (model) {-->
+<!--                  if(model.roomCAlabel_en == currentModel.roomCAlabel_en) $('#roomCAlabel_en').text(model.roomCAlabel_en);-->
+<!--                  currentModel = model;-->
+<!--              }).fail(function (err) {-->
+<!--                  console.error('error', err);-->
+<!--              })-->
+<!--          };-->
+<!--          getData();-->
+<!--          setInterval(getData(),10000);-->
+<!--      });-->
+<!--  </script>-->
   </body>
 </html>
