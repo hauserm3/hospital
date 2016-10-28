@@ -19,7 +19,7 @@ import {RoomsService, VORoom, VORoom3, VOIcon} from "../rooms-service";
                                 <div class="panel-heading text-center">Routine Practices / Pratiques de base</div>
                                 <div class="panel-body">
                                     <div class="row-fluid img_64">
-                                        <div class="col-md-4 text-center">
+                                        <div class="col-md-6 text-center">
                                             <!-- <img src="{{room.FallRisk_i}}"> -->
                                             <img src="app/icons/R_001.png">
                                             <div><strong>Hand Hygiene Required</strong></div>

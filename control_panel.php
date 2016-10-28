@@ -35,22 +35,5 @@
 
   <body>
     <my-admin>Loading...</my-admin>
-
-<!--  <script>-->
-<!--      $(document).ready(function () {-->
-<!--          var currentModel;-->
-<!---->
-<!--          var gedData = function () {-->
-<!--              $.getJSON(url).done(function (model) {-->
-<!--                  if(model.roomCAlabel_en == currentModel.roomCAlabel_en) $('#roomCAlabel_en').text(model.roomCAlabel_en);-->
-<!--                  currentModel = model;-->
-<!--              }).fail(function (err) {-->
-<!--                  console.error('error', err);-->
-<!--              })-->
-<!--          };-->
-<!--          getData();-->
-<!--          setInterval(getData(),10000);-->
-<!--      });-->
-<!--  </script>-->
   </body>
 </html>
