@@ -245,6 +245,11 @@ export class VORoom3 {
 
 }
 
+export class VOSettings {
+    static background_path: string = 'app/img/background.png';
+    static background_name: string = 'background.png';
+}
+
 export class VOResult {
     success: string;
     error: string;

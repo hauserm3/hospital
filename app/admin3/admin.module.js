@@ -19,6 +19,7 @@ var router_1 = require("@angular/router");
 var icon_component_1 = require("./icon.component");
 var panel_component_1 = require("./panel.component");
 var upload_service_1 = require("./upload-service");
+var config_component_1 = require("./config.component");
 var routes = [
     {
         path: '',
@@ -31,6 +32,10 @@ var routes = [
     {
         path: 'icons-manager',
         component: icon_component_1.IconsManager
+    },
+    {
+        path: 'config-manager',
+        component: config_component_1.ConfigManager
     }
 ];
 var AdminModule = (function () {
@@ -45,7 +50,7 @@ var AdminModule = (function () {
                 http_1.JsonpModule,
                 router_1.RouterModule.forRoot(routes) //, { useHash: true })
             ],
-            declarations: [admin_component_1.AdminComponent, panel_component_1.AdminPanel, icon_component_1.IconsManager],
+            declarations: [admin_component_1.AdminComponent, panel_component_1.AdminPanel, icon_component_1.IconsManager, config_component_1.ConfigManager],
             providers: [
                 rooms_service_1.RoomsService,
                 upload_service_1.UploadService,

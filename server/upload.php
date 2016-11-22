@@ -12,14 +12,19 @@ ini_set('html_errors', false);
 //$root = $_SERVER['DOCUMENT_ROOT'];
 
 $root = __DIR__."/../";
-$folder= "app/icons";
+//$folder= "app/icons";
+//$folder2= "app/img";
 
 $file = $_FILES["file"];
 $fileName = $_GET['fileName'];
 
+$fileName == "background.png" ? $folder = "app/img" : $folder= "app/icons";
+
 if(isset($_GET['api'])){
 	$api= explode('/',$_GET['api']);
 }
+
+
 
 
 header('Content-type: application/json');

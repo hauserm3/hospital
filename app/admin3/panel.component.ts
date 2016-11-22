@@ -17,11 +17,16 @@ import {VOIpRoom, RoomsService, VOIp_Rooms, VOResult} from "../rooms-service";
                 </div>
                 <div class="row">
                     <div class="tools">
-                        <div class="col-xs-12">
+                        <div class="col-xs-3">
                             <button class="btn btn-primary" (click) = "onSaveClick()">Save</button>
                             <button class="btn btn-primary" (click) = "onAddClick()">Add</button>
                             <button class="btn btn-primary" (click) = "onDeleteClick()" [disabled]="toolsDisadled">Delete</button>
-                            <button class="btn btn-success pull-right" routerLink="icons-manager">Icons Manager</button>
+                            <!--<button class="btn btn-success pull-right" routerLink="icons-manager">Icons Manager</button>-->
+                            <!--<button class="btn btn-success pull-right" routerLink="config-manager">Config Manager</button>-->
+                        </div>
+                        <div class="col-xs-3 col-xs-offset-6 text-right">
+                            <button class="btn btn-success" routerLink="icons-manager">Icons Manager</button>
+                            <button class="btn btn-success" routerLink="config-manager">Config Manager</button>
                         </div>
                     </div>
                 </div>

@@ -189,6 +189,14 @@ var VORoom3 = (function () {
     return VORoom3;
 }());
 exports.VORoom3 = VORoom3;
+var VOSettings = (function () {
+    function VOSettings() {
+    }
+    VOSettings.background_path = 'app/img/background.png';
+    VOSettings.background_name = 'background.png';
+    return VOSettings;
+}());
+exports.VOSettings = VOSettings;
 var VOResult = (function () {
     function VOResult(obj) {
         for (var str in obj)

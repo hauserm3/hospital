@@ -13,8 +13,6 @@ _temp
 
 !karma*.js
 !protractor*.js
-!systemjs.config.js
-!systemjs.config2.js
 !systemjs.config3.js
 !jquery-3.1.0.min.js
 !typings/typings.d.ts
