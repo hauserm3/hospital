@@ -147,6 +147,9 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                                           </div>
                                       </div>
                                   </div>
+                                  <div id="ContactPrecautions_000" class="psh">
+                                      <img id="CP_image_000" src="">
+                                  </div>
                               </div>
                           </div>
                       </div>
@@ -183,6 +186,9 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                                       </div>
                                   </div>
                               </div>
+                          </div>
+                          <div id="HazardousMedications_000" class="psh">
+                              <img id="HM_image_000" src="">
                           </div>
                       </div>
                   </div>
@@ -231,8 +237,12 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                                   $('#CA_image_'+i).attr('src','app/icons/'+item);
                               });
                           }
+                      } else {
+                          $('#CautionAttention').hide();
                       }
                       if(model.ContactPrecautions) {
+                          $('#ContactPrecautions_000').hide();
+                          $('#ContactPrecautions').show();
                           console.log('ContactPrecautions', model.ContactPrecautions.length);
                           if(model.ContactPrecautions.length == 5){
                               $("#ContactPrecautions_4").hide();
@@ -247,12 +257,21 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                                   $('#CP_image_'+i).attr('src','app/icons/'+item);
                               });
                           }
+                      } else {
+                          $('#ContactPrecautions').hide();
+                          $('#ContactPrecautions_000').show();
+                          $('#CP_image_000').attr('src','app/icons/IC_000.png');
                       }
                       if(model.HazardousMedications){
+                          $('#HazardousMedications_000').hide();
                           $('#HazardousMedications').show();
                           model.HazardousMedications.forEach(function (item,i) {
                               $('#HM_image_'+i).attr('src','app/icons/'+item);
                           });
+                      } else {
+                          $('#HazardousMedications').hide();
+                          $('#HazardousMedications_000').show();
+                          $('#HM_image_000').attr('src','app/icons/HM_000.png');
                       }
 
                       currentModel = model;
