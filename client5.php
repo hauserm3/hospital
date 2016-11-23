@@ -147,7 +147,7 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                                           </div>
                                       </div>
                                   </div>
-                                  <div id="ContactPrecautions_000" class="psh">
+                                  <div id="ContactPrecautions_000" class="panel panel-default text-center psh">
                                       <img id="CP_image_000" src="">
                                   </div>
                               </div>
@@ -187,7 +187,7 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                                   </div>
                               </div>
                           </div>
-                          <div id="HazardousMedications_000" class="psh">
+                          <div id="HazardousMedications_000" class="panel panel-default text-center psh">
                               <img id="HM_image_000" src="">
                           </div>
                       </div>

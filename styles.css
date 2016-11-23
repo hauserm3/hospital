@@ -340,6 +340,14 @@ div.img_178 img{
     max-height: 178px;
     max-width: 178px;
 }
+#CP_image_000{
+    max-height: 506px;
+    max-width: 392px;
+}
+#HM_image_000{
+    max-height: 653px;
+    max-width: 392px;
+}
 
 /*  fieldset border + legend  */
 fieldset.scheduler-border {
