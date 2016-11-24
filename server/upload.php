@@ -1,4 +1,5 @@
 <?php
+include 'settings.php';
 //require_once('dbDriver.php');
 ini_set('html_errors', false);
 
@@ -18,7 +19,7 @@ $root = __DIR__."/../";
 $file = $_FILES["file"];
 $fileName = $_GET['fileName'];
 
-$fileName == "background.png" ? $folder = "app/img" : $folder= "app/icons";
+$fileName == "background.png" ? $folder = $img_folder : $folder= $icons_folder;
 
 if(isset($_GET['api'])){
 	$api= explode('/',$_GET['api']);

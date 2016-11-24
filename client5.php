@@ -3,9 +3,12 @@
 //$room_json = isset($_GET['room_id']) ? file_get_contents($url.'?room_id='.$_GET['room_id']) :
 //             isset($_GET['room_ip']) ? file_get_contents($url.'?room_ip='.$_GET['room_ip']) :
 //             file_get_contents($url);
-$url = 'server/get-room-5.php';
-if(isset($_GET['room_id'])) $url = $url.'?room_id='.$_GET['room_id'];
-elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
+//$url = 'server/get-room-5.php';
+//if(isset($_GET['room_id'])) $url = $url.'?room_id='.$_GET['room_id'];
+//elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
+include 'server/settings.php';
+if(isset($_GET['room_id'])) $get_room_path = $get_room_path.'?room_id='.$_GET['room_id'];
+elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_GET['room_ip'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -204,11 +207,11 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
 
       <script>
           $(document).ready(function () {
-//              url = 'server/get-room-5.php';
-              var $url = '<?php echo $url;?>';
-              console.log('$url', '<?php echo $url;?>');
+              var $url = '<?php echo $get_room_path;?>';                // url = 'server/get-room-5.php';
+              var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
+//              console.log('$url', '<?php //echo $get_room_path;?>//');
+//              console.log('$icons_folder', '<?php //echo $icons_folder;?>//');
               var currentModel;
-
 //              if(model.CA_label_en == currentModel.CA_label_en) $('#CA_label_en').text(model.CA_label_en);
 
               var getData = function () {
@@ -217,7 +220,7 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
 //                      console.log('currentModel', currentModel);
                       $('#Date').text(model.Date);
                       if(model.RoutinePractices) {
-                          $('#RP_image').attr('src','app/icons/'+model.RoutinePractices);
+                          $('#RP_image').attr('src',$icons_folder+model.RoutinePractices);
                           $('#RP_label_en').text(model.RP_label_en);
                           $('#RP_label_fr').text(model.RP_label_fr);
                       }
@@ -228,13 +231,13 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
 //                              console.log('CAUTION_SINGLE', model.CautionAttention instanceof Array);
                               $('#CAUTION_ARR').hide();
                               $('#CAUTION_SINGLE').show();
-                              $('#CA_image').attr('src','app/icons/'+model.CautionAttention);
+                              $('#CA_image').attr('src',$icons_folder+model.CautionAttention);
                           } else {
                               $('#CAUTION_SINGLE').hide();
                               $('#CAUTION_ARR').show();
                               model.CautionAttention.forEach(function (item,i) {
                                   console.log('CautionAttention', item);
-                                  $('#CA_image_'+i).attr('src','app/icons/'+item);
+                                  $('#CA_image_'+i).attr('src',$icons_folder+item);
                               });
                           }
                       } else {
@@ -248,30 +251,30 @@ elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
                               $("#ContactPrecautions_4").hide();
                               $('#ContactPrecautions_5').show();
                               model.ContactPrecautions.forEach(function (item,i) {
-                                  $('#CP_5_image_'+i).attr('src','app/icons/'+item);
+                                  $('#CP_5_image_'+i).attr('src',$icons_folder+item);
                               });
                           } else {
                               $("#ContactPrecautions_5").hide();
                               $('#ContactPrecautions_4').show();
                               model.ContactPrecautions.forEach(function (item,i) {
-                                  $('#CP_image_'+i).attr('src','app/icons/'+item);
+                                  $('#CP_image_'+i).attr('src',$icons_folder+item);
                               });
                           }
                       } else {
                           $('#ContactPrecautions').hide();
                           $('#ContactPrecautions_000').show();
-                          $('#CP_image_000').attr('src','app/icons/IC_000.png');
+                          $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
                       }
                       if(model.HazardousMedications){
                           $('#HazardousMedications_000').hide();
                           $('#HazardousMedications').show();
                           model.HazardousMedications.forEach(function (item,i) {
-                              $('#HM_image_'+i).attr('src','app/icons/'+item);
+                              $('#HM_image_'+i).attr('src',$icons_folder+item);
                           });
                       } else {
                           $('#HazardousMedications').hide();
                           $('#HazardousMedications_000').show();
-                          $('#HM_image_000').attr('src','app/icons/HM_000.png');
+                          $('#HM_image_000').attr('src',$icons_folder+'HM_000.png');
                       }
 
                       currentModel = model;

@@ -1,4 +1,5 @@
 <?php
+include 'settings.php';
 ini_set('html_errors', false);
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -9,7 +10,7 @@ if($method == 'POST'){
     $arr = array();
 
     $post = json_decode(file_get_contents('php://input'),true);
-    $data = json_decode(file_get_contents('data/ip_room.json'));
+    $data = json_decode(file_get_contents($ip_room_path));
 //    print_r($post["IP"] );
 //    print_r($data -> rooms);
     foreach ($data -> rooms as $key => $value){
@@ -20,7 +21,7 @@ if($method == 'POST'){
     }
     $data -> rooms = $arr;
 
-    $out -> resalt = file_put_contents('data/ip_room.json', json_encode($data));
+    $out -> resalt = file_put_contents($ip_room_path, json_encode($data));
     if($out->resalt) $out->success = 'success';
 }
 

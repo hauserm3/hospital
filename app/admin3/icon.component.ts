@@ -117,7 +117,7 @@ export class IconsManager implements OnInit {
         }
     }
     getIcons(){
-        this.roomsService.getIcons3().subscribe(res=>{
+        this.roomsService.getIcons().subscribe(res=>{
             this.icons = res.icons;
         });
     }

@@ -1,9 +1,10 @@
 <?php
+include 'settings.php';
 ini_set('html_errors', false);
 $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'GET'){
-    $out = file_get_contents('data/icons5.json');
+    $out = file_get_contents($icons_path);
 } else {
 
 }

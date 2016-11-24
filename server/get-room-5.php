@@ -1,11 +1,13 @@
 <?php
-$indexes = json_decode(file_get_contents('./data/ip_room.json'));
+include 'settings.php';
+
+$indexes = json_decode(file_get_contents($ip_room_path));
 $indexes = $indexes->rooms;
 
-$icons = json_decode(file_get_contents('./data/icons5.json'));
+$icons = json_decode(file_get_contents($icons_path));
 $icons = $icons->icons;
 
-$room_data = json_decode(file_get_contents('./data/rooms_5.json'));
+$room_data = json_decode(file_get_contents($room_data_path));
 $main_arr = $room_data -> rooms;
 
 $room_id = isset($_GET['room_id']) ? $_GET['room_id'] : 0;

@@ -22,53 +22,40 @@ export class RoomsService{
     constructor(private http:Http){}
 
     getRooms():Observable<VOIp_Rooms>{
-        return this.http.get('server/save_rooms.php').map((res:any)=>{
+        return this.http.get(VOSettings.save_rooms_path).map((res:any)=>{
             // console.log('res', res);
             return new VOIp_Rooms(res.json());
         });
     }
 
-    getRoom():Observable<VORoom>{
-        return this.http.get('server/get-my-room.php?room_id='+1).map((res:any)=>{
-            // console.log('res', res);
-            return new VORoom(res.json());
-        });
-    }
-
     getIcons():Observable<VOIcons>{
-        return this.http.get('server/get_icons.php').map((res:any)=>{
-            return new VOIcons(res.json());
-        });
-    }
-
-    getIcons3():Observable<VOIcons>{
-        return this.http.get('server/get_icons3.php').map((res:any)=>{
+        return this.http.get(VOSettings.get_icons_path).map((res:any)=>{
             return new VOIcons(res.json());
         });
     }
 
     saveRooms(data:VOIp_Rooms):Observable<VOResult>{
-        return this.http.post('server/save_rooms.php',data).map((res:any)=>{
+        return this.http.post(VOSettings.save_rooms_path,data).map((res:any)=>{
             return new VOResult(res.json());
         });
     }
 
     saveIcons(icons:VOIcons):Observable<VOResult>{
-        return this.http.post('server/save_icons.php',icons).map((res:any)=>{
+        return this.http.post(VOSettings.save_icons_path,icons).map((res:any)=>{
             return new VOResult(res.json());
         });
     }
 
     deleteRoom(data:VOIpRoom):Observable<VOResult>{
         delete data.selected;
-        return this.http.post('server/delete_room.php',data).map((res:any)=>{
+        return this.http.post(VOSettings.delete_room_path,data).map((res:any)=>{
             return new VOResult(res.json());
         });
     }
 
     deleteIcon(icon:VOIcon):Observable<VOResult>{
         delete icon.selected;
-        return this.http.post('server/delete_icon.php',icon).map((res:any)=>{
+        return this.http.post(VOSettings.delete_icon_path,icon).map((res:any)=>{
             return new VOResult(res.json());
         });
     }
@@ -248,6 +235,14 @@ export class VORoom3 {
 export class VOSettings {
     static background_path: string = 'app/img/background.png';
     static background_name: string = 'background.png';
+
+    static save_rooms_path: string = 'server/save_rooms.php';
+    static save_icons_path: string = 'server/save_icons.php'; // deprecated ???
+
+    static delete_room_path: string = 'server/delete_room.php';
+    static delete_icon_path: string = 'server/delete_icon.php';
+
+    static get_icons_path: string = 'server/get_icons3.php';
 }
 
 export class VOResult {

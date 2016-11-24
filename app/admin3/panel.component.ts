@@ -123,11 +123,6 @@ export class AdminPanel implements OnInit {
 
     response:any;
 
-    private url:string = "server/room-data.php?";
-    private urlIpRoom:string = "server/room-data.php?ip_room=";
-    private urlRoom:string = "server/room-data.php?room=";
-    private urlIp:string = "server/room-data.php?ip=";
-
     constructor(private http:Http, private roomsService:RoomsService) { }
 
     ngOnInit(){

@@ -16,10 +16,6 @@ var AdminPanel = (function () {
     function AdminPanel(http, roomsService) {
         this.http = http;
         this.roomsService = roomsService;
-        this.url = "server/room-data.php?";
-        this.urlIpRoom = "server/room-data.php?ip_room=";
-        this.urlRoom = "server/room-data.php?room=";
-        this.urlIp = "server/room-data.php?ip=";
     }
     AdminPanel.prototype.ngOnInit = function () {
         var _this = this;

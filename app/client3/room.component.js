@@ -19,11 +19,8 @@ var RoomComponent = (function () {
         this._ngZone = _ngZone;
         this.roomsService = roomsService;
         this.room = new rooms_service_1.VORoom3({});
-        this.url = "server/get-my-room.php";
-        this.urlRoom = "server/get-my-room.php?room=";
-        this.urlIp = "server/get-my-room.php?ip=";
         this.room = JSON.parse($room_json);
-        this.roomsService.getIcons3().subscribe(function (res) {
+        this.roomsService.getIcons().subscribe(function (res) {
             _this.icons = res.icons;
             console.log('this.icons', _this.icons);
             _this.roomsService.setIconsLabel(_this.room, _this.icons);

@@ -142,17 +142,13 @@ export class RoomComponent implements OnInit {
 
     response:any;
 
-    private url:string = "server/get-my-room.php";
-    private urlRoom:string = "server/get-my-room.php?room=";
-    private urlIp:string = "server/get-my-room.php?ip=";
-
     constructor(
         private http:Http,
         private _ngZone: NgZone,
         private roomsService:RoomsService
     ) {
         this.room = JSON.parse($room_json);
-        this.roomsService.getIcons3().subscribe(res=>{
+        this.roomsService.getIcons().subscribe(res=>{
             this.icons = res.icons;
             console.log('this.icons', this.icons);
             this.roomsService.setIconsLabel(this.room,this.icons);

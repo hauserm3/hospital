@@ -1,7 +1,9 @@
 <?php
+include 'settings.php';
 ini_set('html_errors', false);
 $method = $_SERVER['REQUEST_METHOD'];
-$pathFile = __DIR__."/../app/icons/";
+$pathFile = __DIR__."/../".$icons_folder."/";
+//$pathFile = __DIR__."/../app/icons/";
 
 //echo $method;
 

@@ -53,7 +53,7 @@ var IconsManager = (function () {
     };
     IconsManager.prototype.getIcons = function () {
         var _this = this;
-        this.roomsService.getIcons3().subscribe(function (res) {
+        this.roomsService.getIcons().subscribe(function (res) {
             _this.icons = res.icons;
         });
     };

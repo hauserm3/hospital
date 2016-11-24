@@ -23,46 +23,35 @@ var RoomsService = (function () {
         this.selectedIcon$ = this.selectedIconSubject.asObservable();
     }
     RoomsService.prototype.getRooms = function () {
-        return this.http.get('server/save_rooms.php').map(function (res) {
+        return this.http.get(VOSettings.save_rooms_path).map(function (res) {
             // console.log('res', res);
             return new VOIp_Rooms(res.json());
         });
     };
-    RoomsService.prototype.getRoom = function () {
-        return this.http.get('server/get-my-room.php?room_id=' + 1).map(function (res) {
-            // console.log('res', res);
-            return new VORoom(res.json());
-        });
-    };
     RoomsService.prototype.getIcons = function () {
-        return this.http.get('server/get_icons.php').map(function (res) {
-            return new VOIcons(res.json());
-        });
-    };
-    RoomsService.prototype.getIcons3 = function () {
-        return this.http.get('server/get_icons3.php').map(function (res) {
+        return this.http.get(VOSettings.get_icons_path).map(function (res) {
             return new VOIcons(res.json());
         });
     };
     RoomsService.prototype.saveRooms = function (data) {
-        return this.http.post('server/save_rooms.php', data).map(function (res) {
+        return this.http.post(VOSettings.save_rooms_path, data).map(function (res) {
             return new VOResult(res.json());
         });
     };
     RoomsService.prototype.saveIcons = function (icons) {
-        return this.http.post('server/save_icons.php', icons).map(function (res) {
+        return this.http.post(VOSettings.save_icons_path, icons).map(function (res) {
             return new VOResult(res.json());
         });
     };
     RoomsService.prototype.deleteRoom = function (data) {
         delete data.selected;
-        return this.http.post('server/delete_room.php', data).map(function (res) {
+        return this.http.post(VOSettings.delete_room_path, data).map(function (res) {
             return new VOResult(res.json());
         });
     };
     RoomsService.prototype.deleteIcon = function (icon) {
         delete icon.selected;
-        return this.http.post('server/delete_icon.php', icon).map(function (res) {
+        return this.http.post(VOSettings.delete_icon_path, icon).map(function (res) {
             return new VOResult(res.json());
         });
     };
@@ -194,6 +183,11 @@ var VOSettings = (function () {
     }
     VOSettings.background_path = 'app/img/background.png';
     VOSettings.background_name = 'background.png';
+    VOSettings.save_rooms_path = 'server/save_rooms.php';
+    VOSettings.save_icons_path = 'server/save_icons.php'; // deprecated ???
+    VOSettings.delete_room_path = 'server/delete_room.php';
+    VOSettings.delete_icon_path = 'server/delete_icon.php';
+    VOSettings.get_icons_path = 'server/get_icons3.php';
     return VOSettings;
 }());
 exports.VOSettings = VOSettings;
