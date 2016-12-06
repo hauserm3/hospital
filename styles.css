@@ -230,11 +230,13 @@
 /*}*/
 body {
     padding: 20px;
+    background-size: cover;
 }
 footer {
     position: absolute;
     bottom: 15px;
-    right: 25px;
+    right: 85px;
+    font-size: 12px;
 }
 
 .psh{
@@ -341,7 +343,7 @@ div.img_178 img{
     max-width: 178px;
 }
 #CP_image_000{
-    max-height: 506px;
+    max-height: 510px;
     max-width: 392px;
 }
 #HM_image_000{
@@ -377,10 +379,13 @@ legend.success{
     min-height: 266px;
 }
 #CautionAttention {
-    min-height: 230px;
+    min-height: 237px;
 }
 #ContactPrecautions {
-    min-height: 507px;
+    min-height: 513px;
+}
+#ContactPrecautions_000 {
+    min-height: 513px;
 }
 #HazardousMedications {
     min-height: 653px;
