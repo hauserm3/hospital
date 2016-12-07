@@ -391,6 +391,96 @@ legend.success{
     min-height: 653px;
 }
 
+#logo{
+    min-height: 80px;
+}
+#logoText{
+    min-height: 60px;
+}
+
+
+@media screen and (min-width: 1281px) {
+    body {
+        padding: 30px;
+    }
+    #logo{
+        min-height: 120px;
+    }
+    #logoText{
+        min-height: 100px;
+    }
+    .panel-heading {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #RoutinePractices>.panel-body,
+    #CautionAttention>.panel-body {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    #HazardousMedications>.panel-body,
+    #ContactPrecautions>.panel-body{
+        padding-top: 20px;
+    }
+    #HazardousMedications>.panel-body>fieldset,
+    #ContactPrecautions>.panel-body>fieldset{
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .panel-primary>.panel-heading,
+    .panel-info>.panel-heading,
+    .panel-danger>.panel-heading,
+    .panel-success>.panel-heading {
+        font-size: 22px;
+    }
+    #RoutinePractices, #CautionAttention {
+        min-height: 375px;
+    }
+
+    /*.panel-success>.panel-heading {*/
+        /*font-size: 22px;*/
+    /*}*/
+    #ContactPrecautions, #ContactPrecautions_000 {
+        min-height: 760px;
+    }
+
+    /*#ContactPrecautions_000 {*/
+        /*min-height: 760px;*/
+    /*}*/
+
+    #HazardousMedications, #HazardousMedications_000 {
+        height: 980px;
+    }
+    /*#HazardousMedications_000 {*/
+        /*height: 980px;*/
+    /*}*/
+
+    #CP_image_000{
+        max-height: 510px;
+        max-width: 392px;
+    }
+    #HM_image_000{
+        max-height: 980px;
+        max-width: 392px;
+    }
+
+    #HazardousMedications h5,
+    #ContactPrecautions h5{
+        font-size: 20px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 25px;
+        right: 115px;
+        font-size: 13px;
+    }
+    #Date{
+        font-size: 145%;
+    }
+}
 
 /*td > span{*/
 /*font-weight: 600;*/

@@ -53,21 +53,20 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 <!--              <div class="container-fluid">-->
                   <div class="row">
                       <div class="col-md-8">
-                          <div class="row">
-                              <br><br><br><br>
+                          <div id="logo" class="row">
+<!--                              <br><br><br><br>-->
                                 <!-- LOGO-->
                           </div>
-                          <div class="row text-center">
+                          <div id="logoText" class="row text-center">
 <!--                              <h4>Personal Protective Equipment (PPE) available in</h4>-->
 <!--                              <h4>the cabinet outside the patient/client room.</h4>-->
-                              <br><br><br>
+<!--                              <br><br><br>-->
                           </div>
                           <div class="row">
                               <div class="col-md-6">
                                   <div id="RoutinePractices" class="panel panel-primary psh">
                                       <div class="panel-heading text-center">ROUTINE PRACTICES</div>
-                                      <div class="panel-body">
-                                          <br>
+                                      <div class="panel-body vcenter">
                                           <div class="row-fluid img_178">
                                               <div class="col-md-12 text-center">
                                                   <img id="RP_image" src="">
@@ -99,7 +98,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                               <div class="col-md-6">
                                   <div id="ContactPrecautions" class="panel panel-danger psh">
                                       <div class="panel-heading text-center">CONTACT PRECAUTIONS</div>
-                                      <div class="panel-body">
+                                      <div class="panel-body text-center">
         <!--                                  <div class="row">-->
                                             <h5><strong>In addition to routine practices apply the following PPE before entering the room.</strong></h5>
         <!--                                  </div>-->
@@ -158,7 +157,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                       <div class="col-md-4">
                           <div id="HazardousMedications" class="panel panel-success psh">
                               <div class="panel-heading text-center">HAZARDOUS PRECAUTIONS</div>
-                              <div class="panel-body">
+                              <div class="panel-body text-center">
                                   <h5><strong>Apply the following PPE only if you will handle Hazardous Medications or are at risk of handling body fluids.</strong></h5>
 
                                   <fieldset class="scheduler-border text-center">
@@ -212,6 +211,16 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 //              console.log('$icons_folder', '<?php //echo $icons_folder;?>//');
               var currentModel;
 //              if(model.CA_label_en == currentModel.CA_label_en) $('#CA_label_en').text(model.CA_label_en);
+
+              if(window.matchMedia('(min-width: 1281px)').matches)
+              {
+                  $('#CAUTION_ARR').removeClass( 'img_158' ).addClass( 'img_178' );
+                  $('#ContactPrecautions_4').removeClass( 'img_158' ).addClass( 'img_178' );
+                  $('#ContactPrecautions_5').removeClass( 'img_100' ).addClass( 'img_178' );
+                  $('#HazardousMedications').removeClass( 'img_150' ).addClass( 'img_178' );
+//                  $('#CAUTION_ARR').addClass( 'img_178' );
+                  // do functionality on screens smaller than 768px
+              }
 
               var getData = function () {
                   $.getJSON($url).done(function (model) {
