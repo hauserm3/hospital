@@ -1,0 +1,487 @@
+/* Master Styles */
+/*h1 {*/
+  /*color: #369; */
+  /*font-family: Arial, Helvetica, sans-serif;   */
+  /*font-size: 250%;*/
+    /*text-align: center;*/
+/*}*/
+/*h2, h3 { */
+  /*color: #444;*/
+  /*font-family: Arial, Helvetica, sans-serif;   */
+  /*font-weight: lighter;*/
+/*}*/
+/*h4 {*/
+    /*text-align: center;*/
+    /*margin-top: 0;*/
+/*}*/
+/*body { */
+  /*margin: 2em; */
+/*}*/
+/*body, input[text], button { */
+  /*color: #888; */
+  /*font-family: Cambria, Georgia; */
+/*}*/
+/*a {*/
+  /*cursor: pointer;*/
+  /*cursor: hand;*/
+/*}*/
+/*button {*/
+  /*font-family: Arial;*/
+  /*background-color: #286090;*/
+  /*border: none;*/
+  /*padding: 5px 10px;*/
+  /*border-radius: 4px;*/
+  /*cursor: pointer;*/
+  /*cursor: hand;*/
+/*}*/
+/*button:hover {*/
+  /*background-color: #1b518e;*/
+/*}*/
+/*button:disabled {*/
+  /*background-color: #eee;*/
+  /*color: #aaa; */
+  /*cursor: auto;*/
+/*}*/
+/*button:disabled span {*/
+    /*color: #888;*/
+/*}*/
+
+/*!* Navigation link styles *!*/
+/*nav a {*/
+  /*padding: 5px 10px;*/
+  /*text-decoration: none;*/
+  /*margin-top: 10px;*/
+  /*display: inline-block;*/
+  /*background-color: #eee;*/
+  /*border-radius: 4px;*/
+/*}*/
+/*nav a:visited, a:link {*/
+  /*color: #607D8B;*/
+/*}*/
+/*nav a:hover {*/
+  /*color: #039be5;*/
+  /*background-color: #CFD8DC;*/
+/*}*/
+/*nav a.router-link-active {*/
+  /*color: #039be5;*/
+/*}*/
+
+/*!* items class *!*/
+/*.items {*/
+  /*margin: 0 0 2em 0;*/
+  /*list-style-type: none;*/
+  /*padding: 0;*/
+  /*width: 24em;*/
+/*}*/
+/*.items li {*/
+  /*cursor: pointer;*/
+  /*position: relative;*/
+  /*left: 0;*/
+  /*background-color: #EEE;*/
+  /*margin: .5em;*/
+  /*padding: .3em 0;*/
+  /*height: 1.6em;*/
+  /*border-radius: 4px;*/
+/*}*/
+/*.items li:hover {*/
+  /*color: #607D8B;*/
+  /*background-color: #DDD;*/
+  /*left: .1em;*/
+/*}*/
+/*.items li.selected:hover {*/
+  /*background-color: #BBD8DC;*/
+  /*color: white;*/
+/*}*/
+/*.items .text {*/
+  /*position: relative;*/
+  /*top: -3px;*/
+/*}*/
+/*.items {*/
+  /*margin: 0 0 2em 0;*/
+  /*list-style-type: none;*/
+  /*padding: 0;*/
+  /*width: 24em;*/
+/*}*/
+/*.items li {*/
+  /*cursor: pointer;*/
+  /*position: relative;*/
+  /*left: 0;*/
+  /*background-color: #EEE;*/
+  /*margin: .5em;*/
+  /*padding: .3em 0;*/
+  /*height: 1.6em;*/
+  /*border-radius: 4px;*/
+/*}*/
+/*.items li:hover {*/
+  /*color: #607D8B;*/
+  /*background-color: #DDD;*/
+  /*left: .1em;*/
+/*}*/
+/*.items li.selected {*/
+  /*background-color: #CFD8DC;*/
+  /*color: white;*/
+/*}*/
+
+/*.items li.selected:hover {*/
+  /*background-color: #BBD8DC;*/
+/*}*/
+/*.items .text {*/
+  /*position: relative;*/
+  /*top: -3px;*/
+/*}*/
+/*.items .badge {*/
+  /*display: inline-block;*/
+  /*font-size: small;*/
+  /*color: white;*/
+  /*padding: 0.8em 0.7em 0 0.7em;*/
+  /*background-color: #607D8B;*/
+  /*line-height: 1em;*/
+  /*position: relative;*/
+  /*left: -1px;*/
+  /*top: -4px;*/
+  /*height: 1.8em;*/
+  /*margin-right: .8em;*/
+  /*border-radius: 4px 0 0 4px;*/
+/*}*/
+
+/*!* everywhere else *!*/
+/** { */
+  /*font-family: Arial, Helvetica, sans-serif; */
+/*}*/
+
+/*my style*/
+
+/*input.ng-dirty{*/
+    /*border: 2px solid #ffcf2b;*/
+/*}*/
+
+/*.panel{*/
+    /*border-radius: 8px;*/
+    /*border: 2px solid #337ab7;*/
+    /*box-shadow: grey 5px 5px 10px;*/
+    /*padding: 20px;*/
+/*}*/
+
+/*input.ng-dirty.ng-invalid {*/
+    /*border: 2px solid #ff2118;*/
+/*}*/
+
+/*.wrap{*/
+    /*position: relative;*/
+    /*height: 100%;*/
+    /*text-align: center;*/
+    /*padding: 0 20px;*/
+/*}*/
+/*.tools{*/
+    /*margin: 0 auto 10px;*/
+    /*text-align: initial;*/
+    /*padding: 0 2px;*/
+/*}*/
+
+
+/*form button span{*/
+    /*color: #fff;*/
+    /*font-size: 18px;*/
+/*}*/
+
+/*#tableone thead>tr>th{*/
+    /*text-align: center;*/
+/*}*/
+/*!*??????*!*/
+
+
+
+/*.item{*/
+    /*border: 2px solid #337ab7;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+/*.panel{*/
+    /*border-radius: 8px;*/
+    /*border: 2px solid #337ab7;*/
+    /*box-shadow: grey 5px 5px 10px;*/
+/*}*/
+
+/*.p-p{*/
+/*font-size: 18px;*/
+/*background-color: #49256B !important;*/
+/*}*/
+
+/*.p-p{*/
+/*font-size: 18px;*/
+/*background-color: #49256B !important;*/
+/*}*/
+/*.p-d{*/
+/*font-size: 18px;*/
+/*background-color: #D2232A !important;*/
+/*}*/
+/*.p-w{*/
+/*font-size: 18px;*/
+/*background-color: #F47723 !important;*/
+/*}*/
+body {
+    padding: 20px;
+    background-size: cover;
+}
+footer {
+    position: absolute;
+    bottom: 15px;
+    right: 85px;
+    font-size: 12px;
+}
+
+.psh{
+    box-shadow: grey 5px 5px 10px;
+}
+.pb{
+    border-radius: 8px;
+    border: 2px solid #337ab7;
+}
+.p-head{
+    font-size: 24px;
+    background-color: #FDE4A1 !important;
+    font-weight: 700;
+}
+.panel-primary{
+    border-color: #49256B;
+}
+.panel-primary>.panel-heading{
+    font-size: 18px;
+    color: #fffffF;
+    background-color: #49256B !important;
+}
+.panel-danger{
+    border-color: #D2232A;
+}
+.panel-danger>.panel-heading{
+    font-size: 18px;
+    color: #fffffF;
+    background-color: #D2232A !important;
+}
+.panel-warning{
+    border-color: #F47723;
+}
+.panel-warning>.panel-heading{
+    font-size: 18px;
+    color: #fffffF;
+    background-color: #F47723 !important;
+}
+.panel-success{
+    border-color: #00937D;
+}
+.panel-success>.panel-heading{
+    font-size: 18px;
+    color: #fffffF;
+    background-color: #00937D !important;
+}
+.panel-info{
+    border-color: #0085B5;
+}
+.panel-info>.panel-heading{
+    font-size: 18px;
+    color: #fffffF;
+    background-color: #0085B5 !important;
+}
+
+.selected{
+    border: 2px solid #ff7e00;
+}
+/*.fright{*/
+/*float: right;*/
+/*}*/
+
+.navbar>.row{
+    background-color: #ffffff;
+}
+
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
+.table>thead>tr>th{
+    text-align: center;
+}
+td > img{
+    max-height: 64px;
+    max-width: 64px;
+}
+td.img_128 img{
+    max-height: 128px;
+    max-width: 128px;
+}
+
+div.img_64 img{
+    max-height: 64px;
+    max-width: 64px;
+}
+div.img_100 img{
+    max-height: 100px;
+    max-width: 100px;
+}
+div.img_128 img{
+    max-height: 128px;
+    max-width: 128px;
+}
+div.img_150 img{
+    max-height: 150px;
+    max-width: 150px;
+}
+div.img_158 img{
+    max-height: 158px;
+    max-width: 158px;
+}
+div.img_178 img{
+    max-height: 178px;
+    max-width: 178px;
+}
+#CP_image_000{
+    max-height: 510px;
+    max-width: 392px;
+}
+#HM_image_000{
+    max-height: 653px;
+    max-width: 392px;
+}
+
+/*  fieldset border + legend  */
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 2em 0.4em 2em !important;
+    margin: 0 0 0 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+    /*box-shadow:  0px 0px 0px 0px #000;*/
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    width:auto;
+    padding:0 15px;
+    border-bottom:none;
+    margin-bottom: 0;
+}
+legend.danger{
+    color: #D2232A;
+}
+legend.success{
+    color: #00937D;
+}
+/*   --------------------  */
+#RoutinePractices {
+    min-height: 266px;
+}
+#CautionAttention {
+    min-height: 237px;
+}
+#ContactPrecautions {
+    min-height: 513px;
+}
+#ContactPrecautions_000 {
+    min-height: 513px;
+}
+#HazardousMedications {
+    min-height: 653px;
+}
+
+#logo{
+    min-height: 80px;
+}
+#logoText{
+    min-height: 60px;
+}
+
+
+@media screen and (min-width: 1281px) {
+    body {
+        padding: 30px;
+    }
+    #logo{
+        min-height: 120px;
+    }
+    #logoText{
+        min-height: 100px;
+    }
+    .panel-heading {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #RoutinePractices>.panel-body,
+    #CautionAttention>.panel-body {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    #HazardousMedications>.panel-body,
+    #ContactPrecautions>.panel-body{
+        padding-top: 20px;
+    }
+    #HazardousMedications>.panel-body>fieldset,
+    #ContactPrecautions>.panel-body>fieldset{
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .panel-primary>.panel-heading,
+    .panel-info>.panel-heading,
+    .panel-danger>.panel-heading,
+    .panel-success>.panel-heading {
+        font-size: 22px;
+    }
+    #RoutinePractices, #CautionAttention {
+        min-height: 375px;
+    }
+
+    /*.panel-success>.panel-heading {*/
+        /*font-size: 22px;*/
+    /*}*/
+    #ContactPrecautions, #ContactPrecautions_000 {
+        min-height: 760px;
+    }
+
+    /*#ContactPrecautions_000 {*/
+        /*min-height: 760px;*/
+    /*}*/
+
+    #HazardousMedications, #HazardousMedications_000 {
+        height: 980px;
+    }
+    /*#HazardousMedications_000 {*/
+        /*height: 980px;*/
+    /*}*/
+
+    #CP_image_000{
+        max-height: 510px;
+        max-width: 392px;
+    }
+    #HM_image_000{
+        max-height: 980px;
+        max-width: 392px;
+    }
+
+    #HazardousMedications h5,
+    #ContactPrecautions h5{
+        font-size: 20px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 25px;
+        right: 115px;
+        font-size: 13px;
+    }
+    #Date{
+        font-size: 145%;
+    }
+}
+
+/*td > span{*/
+/*font-weight: 600;*/
+/*}*/
