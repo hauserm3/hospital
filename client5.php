@@ -64,18 +64,19 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                           </div>
                           <div class="row">
                               <div class="col-md-6">
-                                  <div id="RoutinePractices" class="panel panel-primary psh">
+                                  <div id="RoutinePractices" class="panel panel-primary psh transition-scale">
                                       <div class="panel-heading text-center">ROUTINE PRACTICES</div>
                                       <div class="panel-body vcenter">
                                           <div class="row-fluid img_178">
                                               <div class="col-md-12 text-center">
+                                                  <div class="segmenter"></div>
                                                   <img id="RP_image" src="">
                                               </div>
                                           </div>
                                       </div>
                                   </div>
 
-                                  <div id="CautionAttention" class="panel panel-info psh">
+                                  <div id="CautionAttention" class="panel panel-info psh transition-scale">
                                       <div class="panel-heading text-center">CAUTION</div>
                                       <div class="panel-body">
 
@@ -96,7 +97,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                                   </div>
                               </div>
                               <div class="col-md-6">
-                                  <div id="ContactPrecautions" class="panel panel-danger psh">
+                                  <div id="ContactPrecautions" class="panel panel-danger psh transition-scale">
                                       <div class="panel-heading text-center">CONTACT PRECAUTIONS</div>
                                       <div class="panel-body text-center">
         <!--                                  <div class="row">-->
@@ -148,14 +149,14 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                                           </div>
                                       </div>
                                   </div>
-                                  <div id="ContactPrecautions_000" class="panel panel-default text-center psh">
+                                  <div id="ContactPrecautions_000" class="panel panel-default text-center psh transition-scale">
                                       <img id="CP_image_000" src="">
                                   </div>
                               </div>
                           </div>
                       </div>
                       <div class="col-md-4">
-                          <div id="HazardousMedications" class="panel panel-success psh">
+                          <div id="HazardousMedications" class="panel panel-success psh transition-scale">
                               <div class="panel-heading text-center">HAZARDOUS PRECAUTIONS</div>
                               <div class="panel-body text-center">
                                   <h5><strong>Apply the following PPE only if you will handle Hazardous Medications or are at risk of handling body fluids.</strong></h5>
@@ -188,7 +189,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                                   </div>
                               </div>
                           </div>
-                          <div id="HazardousMedications_000" class="panel panel-default text-center psh">
+                          <div id="HazardousMedications_000" class="panel panel-default text-center psh transition-scale">
                               <img id="HM_image_000" src="">
                           </div>
                       </div>
@@ -222,6 +223,11 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                   // do functionality on screens smaller than 768px
               }
 
+              var transform = function (idBlock) {
+                  setTimeout(function() { $(idBlock).addClass('transition-scale-activated'); }, 1000);
+//                  $(idBlock).addClass('transition-scale-activated');
+              };
+
               var getData = function () {
                   $.getJSON($url).done(function (model) {
                       console.log('model', model);
@@ -231,6 +237,9 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                           $('#RP_image').attr('src',$icons_folder+model.RoutinePractices);
                           $('#RP_label_en').text(model.RP_label_en);
                           $('#RP_label_fr').text(model.RP_label_fr);
+//                          setTimeout(function() { transform('#RoutinePractices') }, 1000);
+                          $('#RoutinePractices').show();
+                          transform('#RoutinePractices');
                       }
                       if(model.CautionAttention) {
 //                          $('#CA_image').attr('src','app/icons/'+model.CautionAttention);
@@ -248,6 +257,8 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                                   $('#CA_image_'+i).attr('src',$icons_folder+item);
                               });
                           }
+                          $('#CautionAttention').show();
+                          transform('#CautionAttention');
                       } else {
                           $('#CautionAttention').hide();
                       }
@@ -268,10 +279,12 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                                   $('#CP_image_'+i).attr('src',$icons_folder+item);
                               });
                           }
+                          transform('#ContactPrecautions');
                       } else {
                           $('#ContactPrecautions').hide();
                           $('#ContactPrecautions_000').show();
                           $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
+                          transform('#ContactPrecautions_000');
                       }
                       if(model.HazardousMedications){
                           $('#HazardousMedications_000').hide();
@@ -279,12 +292,13 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                           model.HazardousMedications.forEach(function (item,i) {
                               $('#HM_image_'+i).attr('src',$icons_folder+item);
                           });
+                          transform('#HazardousMedications');
                       } else {
                           $('#HazardousMedications').hide();
                           $('#HazardousMedications_000').show();
                           $('#HM_image_000').attr('src',$icons_folder+'HM_000.png');
+                          transform('#HazardousMedications_000');
                       }
-
                       currentModel = model;
 //                      console.log('currentModel', currentModel);
                   }).fail(function (err) {
