@@ -6,6 +6,14 @@ include 'settings.php';
 //$fileXML_5='./data/XMLSampleNov152016.xml';
 //$file_rooms_5='data/rooms_5.json';
 
+function getXMLpath(){
+    global $configJSON;
+    $config =json_decode(file_get_contents($configJSON));
+//    var_dump($config);
+    $fileXML = $config->fileXML_path.$config->fileXML;
+    return $fileXML;
+}
+
 function getDataXML($filepath){
     $out= array();
     $xml = simplexml_load_file($filepath);
@@ -60,12 +68,13 @@ function parseRooms($rooms_arr){
 function saveRooms($rooms_arr,$file_rooms){
     $rooms = new stdClass();
     $rooms -> rooms = $rooms_arr;
-    echo json_encode($rooms);
+//    echo json_encode($rooms);
     file_put_contents($file_rooms, json_encode($rooms));
 }
 
 //echo json_encode(getDataXML($fileXML));
-
+//echo getXMLpath();
+$fileXML = getXMLpath();
 $rowData = getDataXML($fileXML);
 
 //parseRooms($rowData);

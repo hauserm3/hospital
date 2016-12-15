@@ -1,5 +1,6 @@
 <?php
 include 'settings.php';
+include 'room-data-5.php';
 
 $indexes = json_decode(file_get_contents($ip_room_path));
 $indexes = $indexes->rooms;
