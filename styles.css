@@ -231,15 +231,22 @@ legend.success {
 }
 
 #logo {
-    min-height: 120px;
+    /*min-height: 120px;*/
+    margin-top: 20px;
 }
 
 #logoText {
     min-height: 100px;
 }
+#logoText > h3 {
+    margin-top: 5px;
+}
 
-#Date {
+#Date, #textDate {
     font-size: 145%;
+}
+#textDate {
+    color: #D2232A;
 }
 
 footer {

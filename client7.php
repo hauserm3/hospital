@@ -55,14 +55,12 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
             <div id="content">
                   <div class="row">
                       <div class="col-md-8">
-                          <div id="logo" class="row">
-<!--                              <br><br><br><br>-->
-                                <!-- LOGO-->
+                          <div id="logo" class="row text-center">
+                              <img src="app/img/logo.png">
                           </div>
                           <div id="logoText" class="row text-center">
-<!--                              <h4>Personal Protective Equipment (PPE) available in</h4>-->
-<!--                              <h4>the cabinet outside the patient/client room.</h4>-->
-<!--                              <br><br><br>-->
+                              <h3><strong>Personal Protective Equipment (PPE) available in</strong></h3>
+                              <h3><strong>the cabinet outside the patient/client room.</strong></h3>
                           </div>
                           <div class="row">
                               <div class="col-md-6">
@@ -202,7 +200,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 <!--          </div>-->
 <!--          <div class="panel-footer text-right"></div>-->
             <footer>
-                <strong id="Date"></strong>
+                <strong id="textDate">Last updated:  </strong><strong id="Date"></strong>
             </footer>
 <!--      </div>-->
 
