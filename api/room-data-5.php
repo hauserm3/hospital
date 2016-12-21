@@ -1,18 +1,23 @@
 <?php
-include 'settings.php';
+require_once 'settings.php';
+//include 'get_XML_path.php';
+//if(!function_exists("getXMLpath")) {
+//    // declare your function
+//    include 'get_XML_path.php';
+//}
 //ini_set('display_errors', 1);
 //error_reporting(E_ALL ^ E_NOTICE);
 
 //$fileXML_5='./data/XMLSampleNov152016.xml';
 //$file_rooms_5='data/rooms_5.json';
 
-function getXMLpath(){
-    global $configJSON;
-    $config =json_decode(file_get_contents($configJSON));
-//    var_dump($config);
-    $fileXML = $config->fileXML_path.$config->fileXML;
-    return $fileXML;
-}
+//function getXMLpath(){
+//    global $configJSON;
+//    $config =json_decode(file_get_contents($configJSON));
+////    var_dump($config);
+//    $fileXML = $config->fileXML_path.$config->fileXML;
+//    return $fileXML;
+//}
 
 function getDataXML($filepath){
     $out= array();
@@ -27,8 +32,10 @@ function parseRooms($rooms_arr){
     foreach ($rooms_arr as $value){
         $room = new stdClass();
         $room -> ID = $value['ID'];
-        $room -> Date = $value['Date'];
-        $room -> BedName = $value['BED']['Name'];
+//        $room -> Date = $value['Date'];
+        $room -> Date = $value['DATE'];
+//        $room -> BedName = $value['BED']['Name'];
+        $room -> BedName = $value['BED']['NAME'];
         $room -> RoutinePractices = $value['RoutinePractices']['Image'];
 //        if(array_key_exists('Image',$value['CautionAttention']) && $value['CautionAttention']['Image'] != 'FALSE'){
 //            $room -> CautionAttention = $value['CautionAttention']['Image'];
@@ -74,7 +81,7 @@ function saveRooms($rooms_arr,$file_rooms){
 
 //echo json_encode(getDataXML($fileXML));
 //echo getXMLpath();
-$fileXML = getXMLpath();
+//$fileXML = getXMLpath();
 $rowData = getDataXML($fileXML);
 
 //parseRooms($rowData);

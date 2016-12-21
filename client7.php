@@ -6,7 +6,7 @@
 //$url = 'server/get-room-5.php';
 //if(isset($_GET['room_id'])) $url = $url.'?room_id='.$_GET['room_id'];
 //elseif (isset($_GET['room_ip'])) $url = $url.'?room_ip='.$_GET['room_ip'];
-include 'server/settings.php';
+include 'api/settings.php';
 if(isset($_GET['room_id'])) $get_room_path = $get_room_path.'?room_id='.$_GET['room_id'];
 elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_GET['room_ip'];
 ?>
@@ -207,8 +207,8 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 
       <script>
           $(document).ready(function () {
-              var $data_parse = '<?php echo $room_data;?>';             // data_parse = 'server/get-room-5.php';
-              var $url = '<?php echo $get_room_path;?>';                // url = 'server/get-room-5.php';
+              var $data_parse = '<?php echo $room_data;?>';             // data_parse = 'api/room-data-5.php';
+              var $url = '<?php echo $get_room_path;?>';                // url = 'api/get-room-5.php';
               var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
 //              console.log('$url', '<?php //echo $get_room_path;?>//');
 //              console.log('$icons_folder', '<?php //echo $icons_folder;?>//');
@@ -231,7 +231,9 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
               };
 
               var getData = function () {
-                  $.getJSON($url).done(function (model) {
+                  $.getJSON($url).done(function (res) {
+                      $('#content').removeClass('network-offline');
+                      if(res.result){model = res.result}
                       console.log('model', model);
 //                      console.log('currentModel', currentModel);
                       $('#Date').text(model.Date);
@@ -301,7 +303,8 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 //                      console.log('currentModel', currentModel);
                       console.log('DATA', currentModel);
                   }).fail(function (err) {
-                      console.error('error', err);
+                      console.error('error: ', err);
+                      $('#content').addClass('network-offline');
                   })
               };
 
@@ -310,14 +313,21 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 //              };
 
 //              var checkChanges = function() {
-////                  $.get("server/check-changes.php");
-//                  $.get("server/room-data-5.php");
+//                  $.get("api/check_changes.php").done(function (data) {
+//                      if(data.changes) {
+//                          console.log('checkChanges: ', data);
+//                          getData();
+//                      } else {
+//                          console.log('checkChangesFALSE: ', data);
+//                      }
+//                  });
+////                  $.get("server/room-data-5.php");
 //                  return false;
 //              };
 
               getData();
-//              setInterval(function(){getData()},5000);
-//              setInterval(function(){checkChanges()},1000);
+//              setInterval(function(){checkChanges()},5000);
+              setInterval(function(){getData()},10000);
           });
       </script>
   </body>

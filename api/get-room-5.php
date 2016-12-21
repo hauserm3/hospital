@@ -1,6 +1,14 @@
 <?php
-include 'settings.php';
-include 'room-data-5.php';
+require_once 'settings.php';
+//include_once 'room-data-5.php';
+
+$XML_timestamp = filemtime($fileXML);
+$configFile= filemtime($configJSON);
+$room_data_timestamp = filemtime($room_data_path);
+
+if($XML_timestamp > $room_data_timestamp || $configFile > $room_data_timestamp){
+    include_once 'room-data-5.php';
+}
 
 $indexes = json_decode(file_get_contents($ip_room_path));
 $indexes = $indexes->rooms;
@@ -26,17 +34,19 @@ else {
 
 if($room) {
     $room = setIconsLabel($room,$icons);
-    header('Content-type: application/json');
-    echo json_encode($room);
 //    $room_json = json_encode($room);
 } else {
     $room_id = 1;
     $room = getDataByID($room_id, $main_arr);
     $room = setIconsLabel($room,$icons);
-    header('Content-type: application/json');
-    echo json_encode($room);
 //    $room_json = json_encode($room);
 }
+
+$out = new stdClass();
+$out->result = $room;
+
+header('Content-type: application/json');
+echo json_encode($out);
 
 function getDataByID($room_id, $data){
     foreach ($data as $value){

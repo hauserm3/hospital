@@ -344,6 +344,10 @@ footer {
     opacity: 1;
 }
 
+.network-offline{
+    border: solid 5px red;
+}
+
 /*.transition-scale:hover {*/
     /*-webkit-transform: scale(1);*/
     /*transform: scale(1);*/

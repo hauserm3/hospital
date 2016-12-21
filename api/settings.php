@@ -1,14 +1,29 @@
 <?php
 
 $configJSON = "../config.json";
-//$config =json_decode(file_get_contents($configJSON));
 
+if(file_exists($configJSON)){
+    $config = json_decode(file_get_contents($configJSON));
+    $fileXML = $config->fileXML;
+}
+
+//echo $fileXML;
+//$fileXML = $config->fileXML_path.$config->fileXML;
 //$fileXML ='data/XMLSampleNov152016.xml';
 //$fileXML = $config->fileXML_path.$config->fileXML;
 
+//??????????????????????????????????????????????????????????????
+//function getXMLpath(){
+//    global $configJSON;
+//    $config =json_decode(file_get_contents($configJSON));
+////    var_dump($config);
+//    $fileXML = $config->fileXML_path.$config->fileXML;
+//    return $fileXML;
+//}
+//$fileXML = getXMLpath();
 
-$get_room_path = 'server/get-room-5.php';
-$room_data = 'server/room-data-5.php';
+$get_room_path = 'api/get-room-5.php';
+$room_data = 'api/room-data-5.php';
 
 $ip_room_path = 'data/ip_room.json';
 $icons_path = 'data/icons5.json';
