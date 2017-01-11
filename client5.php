@@ -268,7 +268,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                       } else {
                           $('#CautionAttention').hide();
                       }
-                      if(model.ContactPrecautions) {
+                      if(model.ContactPrecautions && model.ContactPrecautions[0] != 'IC_000.png') {
                           $('#ContactPrecautions_000').hide();
                           $('#ContactPrecautions').show();
                           console.log('ContactPrecautions', model.ContactPrecautions.length);
@@ -292,7 +292,7 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                           $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
                           transform('#ContactPrecautions_000');
                       }
-                      if(model.HazardousMedications){
+                      if(model.HazardousMedications && model.HazardousMedications[0] != 'HM_000.png'){
                           $('#HazardousMedications_000').hide();
                           $('#HazardousMedications').show();
                           model.HazardousMedications.forEach(function (item,i) {
