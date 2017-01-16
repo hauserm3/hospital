@@ -33,7 +33,7 @@
   </head>
 
 
-  <body>
+  <body style="background-image: none">
     <my-admin>Loading...</my-admin>
   </body>
 </html>

@@ -183,11 +183,11 @@ var VOSettings = (function () {
     }
     VOSettings.background_path = 'app/img/background.png';
     VOSettings.background_name = 'background.png';
-    VOSettings.save_rooms_path = 'server/save_rooms.php';
-    VOSettings.save_icons_path = 'server/save_icons.php'; // deprecated ???
-    VOSettings.delete_room_path = 'server/delete_room.php';
-    VOSettings.delete_icon_path = 'server/delete_icon.php';
-    VOSettings.get_icons_path = 'server/get_icons3.php';
+    VOSettings.save_rooms_path = 'api/save_rooms.php';
+    VOSettings.save_icons_path = 'api/save_icons.php'; // deprecated ???
+    VOSettings.delete_room_path = 'api/delete_room.php';
+    VOSettings.delete_icon_path = 'api/delete_icon.php';
+    VOSettings.get_icons_path = 'api/get_icons3.php';
     return VOSettings;
 }());
 exports.VOSettings = VOSettings;

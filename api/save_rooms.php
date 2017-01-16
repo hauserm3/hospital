@@ -1,7 +1,7 @@
 <?php
 include 'settings.php';
 
-ini_set('html_errors', false);
+//ini_set('html_errors', false);
 $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'GET'){

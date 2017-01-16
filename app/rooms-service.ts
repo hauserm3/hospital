@@ -236,13 +236,13 @@ export class VOSettings {
     static background_path: string = 'app/img/background.png';
     static background_name: string = 'background.png';
 
-    static save_rooms_path: string = 'server/save_rooms.php';
-    static save_icons_path: string = 'server/save_icons.php'; // deprecated ???
+    static save_rooms_path: string = 'api/save_rooms.php';
+    static save_icons_path: string = 'api/save_icons.php'; // deprecated ???
 
-    static delete_room_path: string = 'server/delete_room.php';
-    static delete_icon_path: string = 'server/delete_icon.php';
+    static delete_room_path: string = 'api/delete_room.php';
+    static delete_icon_path: string = 'api/delete_icon.php';
 
-    static get_icons_path: string = 'server/get_icons3.php';
+    static get_icons_path: string = 'api/get_icons3.php';
 }
 
 export class VOResult {
