@@ -24,13 +24,13 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
 
     <!-- Polyfill(s) for older browsers -->
       <script src="libs/jquery-3.1.0.min.js"></script>
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+<!--    <script src="node_modules/core-js/client/shim.min.js"></script>-->
+<!---->
+<!--    <script src="node_modules/zone.js/dist/zone.js"></script>-->
+<!--    <script src="node_modules/reflect-metadata/Reflect.js"></script>-->
+<!--    <script src="node_modules/systemjs/dist/system.src.js"></script>-->
 
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-
-    <script src="systemjs.config3.js"></script>
+<!--    <script src="systemjs.config3.js"></script>-->
       <style>
           .panel{
               margin-bottom: 10px;
@@ -308,9 +308,11 @@ elseif (isset($_GET['room_ip'])) $get_room_path = $get_room_path.'?room_ip='.$_G
                       currentModel = model;
 //                      console.log('currentModel', currentModel);
                       console.log('DATA', currentModel);
-                  }).fail(function (err) {
-                      console.error('error: ', err);
+                  }).fail(function (jqxhr, textStatus, error) {
+                      console.error('error: ', error);
+//                      console.log('jqxhr: ', jqxhr);
                       $('#content').addClass('network-offline');
+//                      window.location.reload();
                   })
               };
 
