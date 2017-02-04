@@ -12,7 +12,7 @@ export class UploadService{
     upload(form:FormData, fileName:string):JQueryPromise<VOResult>{
 
         return  $.ajax({
-            url: 'server/upload.php?fileName='+fileName,
+            url: 'api/upload.php?fileName='+fileName,
             type: 'POST',
             dataType: 'json',
             data: form,

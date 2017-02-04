@@ -28,24 +28,11 @@ var IconsManager = (function () {
         this.roomsService.selectedIcon$.subscribe(function (item) {
             _this.currentIcon = item;
             _this.toolsDisadled = item.selected ? false : true;
-            // console.log('this.toolsDisadled ', this.toolsDisadled);
-        });
-    };
-    IconsManager.prototype.onDeleteClick = function () {
-        var _this = this;
-        if (!this.currentIcon)
-            return;
-        this.toolsDisadled = true;
-        this.roomsService.deleteIcon(this.currentIcon).subscribe(function (res) {
-            // this.getIcons();
-            _this.currentIcon.iconPath = _this.currentIcon.iconPath + "?" + Date.now();
-            console.log(res);
         });
     };
     IconsManager.prototype.onDeleteItemClick = function (item) {
         if (confirm('You want to delete icon "' + item.label_en + '"?')) {
             this.roomsService.deleteIcon(item).subscribe(function (res) {
-                // this.getIcons();
                 item.iconPath = item.iconPath + "?" + Date.now();
                 console.log(res);
             });
@@ -59,19 +46,15 @@ var IconsManager = (function () {
     };
     IconsManager.prototype.onIconClick = function (item) {
         this.roomsService.selectIcon(item);
-        // console.log('item', item);
     };
     IconsManager.prototype.onChange = function (evt, icon) {
         var files = evt.target.files;
-        console.log('files', files);
-        // console.log('filename', filename);
         if (files.length) {
             var form = new FormData();
             var file = files[0];
             form.append('file', file);
             if (files[0].size < 2000000) {
                 this.uploadService.upload(form, icon.filename).done(function (res) {
-                    // this.getIcons();
                     icon.iconPath = icon.iconPath + "?" + Date.now();
                     console.log(res);
                 });
@@ -83,7 +66,7 @@ var IconsManager = (function () {
     IconsManager = __decorate([
         core_1.Component({
             selector: 'icons-manager',
-            template: "\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-xs-12 text-center\">\n                    <h1>Icons Manager</h1>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"tools\">\n                    <div class=\"col-xs-1\">\n                        <button class=\"btn btn-primary\" (click) = \"onAddClick()\" [disabled]=\"addDisadled\">Add</button>\n                        <!--<button class=\"btn btn-primary\" (click) = \"onDeleteClick()\" [disabled]=\"toolsDisadled\">Delete</button>-->\n                        <!--<button class=\"btn btn-success pull-right\" routerLink=\"\" >Admin Panel</button>-->\n                        <!--<button class=\"btn btn-success pull-right\" routerLink=\"../config-manager\">Config Manager</button>-->\n                    </div>\n                    <div class=\"col-xs-3 col-xs-offset-8 text-right\">\n                        <button class=\"btn btn-success\" routerLink=\"\" >Admin Panel</button>\n                        <button class=\"btn btn-success\" routerLink=\"../config-manager\">Config Manager</button>\n                    </div>\n                </div>\n            </div>\n            <br>\n            <div class=\"row\">\n                <div class=\"col-xs-12\">\n                    <div class=\"panel panel-default psh pb\">\n                        <div class=\"panel-body\">\n                            <table class=\"table table-condensed table-striped\">\n                                <thead>\n                                    <tr>\n                                        <th>ICONS</th>\n                                        <th>NAME</th>\n                                        <th colspan=\"2\">CHANGE</th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                    <tr style=\"height: 1.5px;\"></tr>\n                                    <tr *ngFor=\"let item of icons\" (click)=\"onIconClick(item)\" [class.selected]=\"item.selected\">\n                                        <td class=\"text-center\">\n                                            <img src=\"{{item.iconPath}}\">\n                                        </td>\n                                        <td class=\"text-left\">\n                                            <span>{{item.label_en}}</span>\n                                            <!--<span> / {{item.label_fr}}</span>-->\n                                        </td>\n                                        <td class=\"text-center\">\n                                            <label *ngIf=\"item.selected\" class=\"btn btn-default btn-file fa fa-download\">\n                                                <input style=\"display: none;\" name='file' ngModel type='file' (change)=\"onChange($event,item)\"/>\n                                            </label>\n                                        </td>\n                                        <td class=\"text-center\">\n                                            <a *ngIf=\"item.selected\" class=\"btn fa fa-times-circle\" (click) = \"onDeleteItemClick(item)\"></a>\n                                        </td>\n                                    </tr>\n                                </tbody>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
+            template: "\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-xs-12 text-center\">\n                    <h1>Icons Manager</h1>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"tools\">\n                    <div class=\"col-xs-1\">\n                        <button class=\"btn btn-primary\" (click) = \"onAddClick()\" [disabled]=\"addDisadled\">Add</button>\n                    </div>\n                    <div class=\"col-xs-3 col-xs-offset-8 text-right\">\n                        <button class=\"btn btn-success\" routerLink=\"\" >Admin Panel</button>\n                        <button class=\"btn btn-success\" routerLink=\"../config-manager\">Config Manager</button>\n                    </div>\n                </div>\n            </div>\n            <br>\n            <div class=\"row\">\n                <div class=\"col-xs-12\">\n                    <div class=\"panel panel-default psh pb\">\n                        <div class=\"panel-body\">\n                            <table class=\"table table-condensed table-striped\">\n                                <thead>\n                                    <tr>\n                                        <th>ICONS</th>\n                                        <th>NAME</th>\n                                        <th colspan=\"2\">CHANGE</th>\n                                    </tr>\n                                </thead>\n                                <tbody>\n                                    <tr style=\"height: 1.5px;\"></tr>\n                                    <tr *ngFor=\"let item of icons\" (click)=\"onIconClick(item)\" [class.selected]=\"item.selected\">\n                                        <td class=\"text-center\">\n                                            <img src=\"{{item.iconPath}}\">\n                                        </td>\n                                        <td class=\"text-left\">\n                                            <span>{{item.label_en}}</span>\n                                        </td>\n                                        <td class=\"text-center\">\n                                            <label *ngIf=\"item.selected\" class=\"btn btn-default btn-file fa fa-download\">\n                                                <input style=\"display: none;\" name='file' ngModel type='file' (change)=\"onChange($event,item)\"/>\n                                            </label>\n                                        </td>\n                                        <td class=\"text-center\">\n                                            <a *ngIf=\"item.selected\" class=\"btn fa fa-times-circle\" (click) = \"onDeleteItemClick(item)\"></a>\n                                        </td>\n                                    </tr>\n                                </tbody>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n",
             styles: ["\n       \n    "]
         }), 
         __metadata('design:paramtypes', [http_1.Http, rooms_service_1.RoomsService, upload_service_1.UploadService])

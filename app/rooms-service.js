@@ -61,7 +61,6 @@ var RoomsService = (function () {
         this.selectedItem = item;
         this.selectedItem.selected = true;
         this.selectedItemSubject.next(item);
-        // console.log('selectItem ', this.selectedItem);
     };
     RoomsService.prototype.selectIcon = function (item) {
         if (this.selectedICon)
@@ -69,37 +68,6 @@ var RoomsService = (function () {
         this.selectedICon = item;
         this.selectedICon.selected = true;
         this.selectedIconSubject.next(item);
-        // console.log('selectItem ', this.selectedICon);
-    };
-    RoomsService.prototype.setIconsLabel = function (room, icons) {
-        if ('RoutinePractices' in room) {
-            icons.forEach(function (item) {
-                if (item.filename == room.RoutinePractices) {
-                    room.RP_label_en = item.label_en;
-                    room.RP_label_fr = item.label_fr;
-                }
-            });
-        }
-        if ('CautionAttention' in room) {
-            icons.forEach(function (item) {
-                if (item.filename == room.CautionAttention) {
-                    room.CA_label_en = item.label_en;
-                    room.CA_label_fr = item.label_fr;
-                }
-            });
-        }
-        if ('ContactPrecautions' in room) {
-            room.CP_label_en = [];
-            room.CP_label_fr = [];
-            icons.forEach(function (item) {
-                room.ContactPrecautions.forEach(function (value, i) {
-                    if (item.filename == value) {
-                        room.CP_label_en[i] = item.label_en;
-                        room.CP_label_fr[i] = item.label_fr;
-                    }
-                });
-            });
-        }
     };
     RoomsService = __decorate([
         core_1.Injectable(), 
@@ -120,7 +88,6 @@ var VOIp_Rooms = (function () {
     function VOIp_Rooms(obj) {
         for (var str in obj)
             this[str] = obj[str];
-        // console.log(this.rooms);
         if (this.rooms)
             this.rooms = this.rooms.map(function (item) {
                 return new VOIpRoom(item);
@@ -142,34 +109,14 @@ var VOIcons = (function () {
     function VOIcons(obj) {
         for (var str in obj)
             this[str] = obj[str];
-        // console.log(this.rooms);
         if (this.icons)
             this.icons = this.icons.map(function (item) {
                 return new VOIcon(item);
             });
-        // this.icons = obj.map(function (item) {
-        //     return new VOIcon(item);
-        // });
     }
     return VOIcons;
 }());
 exports.VOIcons = VOIcons;
-var VORoom = (function () {
-    function VORoom(obj) {
-        for (var str in obj)
-            this[str] = obj[str];
-    }
-    return VORoom;
-}());
-exports.VORoom = VORoom;
-var VORoom2 = (function () {
-    function VORoom2(obj) {
-        for (var str in obj)
-            this[str] = obj[str];
-    }
-    return VORoom2;
-}());
-exports.VORoom2 = VORoom2;
 var VORoom3 = (function () {
     function VORoom3(obj) {
         for (var str in obj)

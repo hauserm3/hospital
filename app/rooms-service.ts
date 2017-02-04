@@ -66,7 +66,6 @@ export class RoomsService{
         this.selectedItem = item;
         this.selectedItem.selected = true;
         this.selectedItemSubject.next(item);
-        // console.log('selectItem ', this.selectedItem);
     }
 
     selectIcon(item:VOIcon){
@@ -74,41 +73,6 @@ export class RoomsService{
         this.selectedICon = item;
         this.selectedICon.selected = true;
         this.selectedIconSubject.next(item);
-        // console.log('selectItem ', this.selectedICon);
-    }
-
-    setIconsLabel(room:VORoom3,icons:VOIcon[]){
-
-        if('RoutinePractices' in room){
-            icons.forEach(function (item) {
-                if(item.filename == room.RoutinePractices){
-                    room.RP_label_en = item.label_en;
-                    room.RP_label_fr = item.label_fr;
-                }
-            })
-        }
-
-        if('CautionAttention' in room){
-            icons.forEach(function (item) {
-                if(item.filename == room.CautionAttention) {
-                    room.CA_label_en = item.label_en;
-                    room.CA_label_fr = item.label_fr;
-                }
-            })
-        }
-
-        if('ContactPrecautions' in room){
-            room.CP_label_en = [];
-            room.CP_label_fr = [];
-            icons.forEach(function (item) {
-                room.ContactPrecautions.forEach(function (value,i) {
-                    if(item.filename == value) {
-                        room.CP_label_en[i] = item.label_en;
-                        room.CP_label_fr[i] = item.label_fr;
-                    }
-                })
-            })
-        }
     }
 }
 
@@ -128,7 +92,6 @@ export class VOIp_Rooms {
 
     constructor (obj:any) {
         for (var str in obj)this[str] = obj[str];
-        // console.log(this.rooms);
         if(this.rooms) this.rooms = this.rooms.map(function (item) {
             return new VOIpRoom(item);
         });
@@ -153,61 +116,10 @@ export class VOIcons{
 
     constructor (obj:VOIcon[]) {
         for (var str in obj)this[str] = obj[str];
-        // console.log(this.rooms);
         if(this.icons) this.icons = this.icons.map(function (item) {
             return new VOIcon(item);
         });
-        // this.icons = obj.map(function (item) {
-        //     return new VOIcon(item);
-        // });
     }
-}
-
-export class VORoom {
-    IP: string;
-    ID: number;
-    BedName: string;
-    Patientname: string;
-    FallRisk: string;
-    FallRisk_f: string;
-    FallRisk_i: string;
-    AllergyMed: string;
-    AllergyMed_f: string;
-    AllergyMed_i: string;
-    AllergyLatex: string;
-    AllergyLatex_f: string;
-    AllergyLatex_i: string;
-    AllergyFood: string;
-    AllergyFood_f: string;
-    AllergyFood_i: string;
-    AllergySubstance: string;
-    AllergySubstance_f: string;
-    AllergySubstance_i: string;
-    HazardousMed: string;
-    HazardousMed_f: string;
-    HazardousMed_i: string;
-    InfectionControl: string;
-    InfectionControl_f: string;
-    InfectionControl_i: string;
-
-    constructor (obj:any) {
-        for (var str in obj) this[str] = obj[str];
-    }
-}
-
-export class VORoom2 {
-    IP: string;
-    ID: number;
-    BedName: string;
-    FallRisk: string;
-    HazardousMed: string;
-    InfectionControl: any;
-    Precautions: any;
-
-    constructor (obj:any) {
-        for (var str in obj) this[str] = obj[str];
-    }
-
 }
 
 export class VORoom3 {
@@ -216,20 +128,13 @@ export class VORoom3 {
     Date: string;
     BedName: string;
     RoutinePractices: string;
-    RP_label_en: string;
-    RP_label_fr: string;
     CautionAttention: string;
-    CA_label_en: string;
-    CA_label_fr: string;
     HazardousMedications: boolean;
     ContactPrecautions: string[];
-    CP_label_en: string[];
-    CP_label_fr: string[];
 
     constructor (obj:any) {
         for (var str in obj) this[str] = obj[str];
     }
-
 }
 
 export class VOSettings {

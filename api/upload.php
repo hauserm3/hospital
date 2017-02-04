@@ -1,20 +1,7 @@
 <?php
 include 'settings.php';
-//require_once('dbDriver.php');
-ini_set('html_errors', false);
-
-//$_SERVER['DOCUMENT_ROOT'] ."room/app/icons/";
-
-//$root = '../';
-//$folder= '../app/icons';
-//$file = $_FILES["file"];
-//$fileName = $_GET['fileName'];
-
-//$root = $_SERVER['DOCUMENT_ROOT'];
 
 $root = __DIR__."/../";
-//$folder= "app/icons";
-//$folder2= "app/img";
 
 $file = $_FILES["file"];
 $fileName = $_GET['fileName'];
@@ -25,11 +12,7 @@ if(isset($_GET['api'])){
 	$api= explode('/',$_GET['api']);
 }
 
-
-
-
 header('Content-type: application/json');
-
 
 $out = new stdClass();
 $err = checkFoErrors($file);

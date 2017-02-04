@@ -21,8 +21,6 @@ import {VOIpRoom, RoomsService, VOIp_Rooms, VOResult} from "../rooms-service";
                             <button class="btn btn-primary" (click) = "onSaveClick()">Save</button>
                             <button class="btn btn-primary" (click) = "onAddClick()">Add</button>
                             <button class="btn btn-primary" (click) = "onDeleteClick()" [disabled]="toolsDisadled">Delete</button>
-                            <!--<button class="btn btn-success pull-right" routerLink="icons-manager">Icons Manager</button>-->
-                            <!--<button class="btn btn-success pull-right" routerLink="config-manager">Config Manager</button>-->
                         </div>
                         <div class="col-xs-3 col-xs-offset-6 text-right">
                             <button class="btn btn-success" routerLink="icons-manager">Icons Manager</button>
@@ -88,14 +86,6 @@ import {VOIpRoom, RoomsService, VOIp_Rooms, VOResult} from "../rooms-service";
             display: inline-block;
             margin: 0 5px;
         }
-        
-        /*#tablebody{*/
-            /*border-radius: 8px;*/
-            /*border: 2px solid #337ab7;*/
-            /*box-shadow: grey 5px 5px 10px;*/
-            /*padding: 7px 0;*/
-            /*margin: 0 0 5px;*/
-        /*}*/
         .selected{
             border: 2px solid #ff7e00;
         }
@@ -132,26 +122,21 @@ export class AdminPanel implements OnInit {
         this.roomsService.selectedItem$.subscribe((item:VOIpRoom)=>{
             this.currentItem = item;
             this.toolsDisadled = item.selected ? false : true;
-            // console.log('this.toolsDisadled ', this.toolsDisadled);
         });
     }
 
     saveData(){
-
         this.rooms.forEach(function (item) {
             delete item.selected;
         });
 
-        var out:VOIp_Rooms = new VOIp_Rooms({
+        let out:VOIp_Rooms = new VOIp_Rooms({
             vers: this.vers++,
             rooms: this.rooms
         });
 
-        console.log('out', out);
-
         this.roomsService.saveRooms(out).subscribe((res:VOResult)=>{
             this.toolsDisadled = true;
-            console.log(res);
         });
     }
 
@@ -189,7 +174,6 @@ export class AdminPanel implements OnInit {
 
     onIpRoomClick(item:VOIpRoom){
         this.roomsService.selectItem(item);
-        // console.log('item', item);
     }
 
 }

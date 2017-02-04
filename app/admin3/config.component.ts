@@ -41,7 +41,6 @@ import {UploadService} from "./upload-service";
                                 </thead>
                                 <tbody>
                                     <tr style="height: 1.5px;"></tr>
-                                    <!--<tr (click)="onItemClick(item)" [class.selected]="selected">-->
                                     <tr (click)="onItemClick(item)">
                                         <td class="text-center img_128">
                                             <img src="{{background_path}}">
@@ -50,14 +49,10 @@ import {UploadService} from "./upload-service";
                                             <span><strong>background</strong></span>
                                         </td>
                                         <td class="text-center">
-                                            <!--<label *ngIf="selected" class="btn btn-default btn-file fa fa-download">-->
                                             <label class="btn btn-default btn-file fa fa-download">
                                                 <input style="display: none;" name='file' ngModel type='file' (change)="onChange($event,background_name)"/>
                                             </label>
                                         </td>
-                                        <!--<td class="text-center">-->
-                                            <!--<a *ngIf="selected" class="btn fa fa-times-circle" (click) = "onDeleteItemClick(item)"></a>-->
-                                        <!--</td>-->
                                     </tr>
                                 </tbody>
                             </table>
@@ -97,7 +92,6 @@ export class ConfigManager implements OnInit {
     // onDeleteItemClick(item:VOIcon){
     //     if(confirm('You want to delete background ?')){
     //         this.roomsService.deleteIcon(item).subscribe((res:VOResult)=>{
-    //             // this.getIcons();
     //             item.iconPath = item.iconPath + "?" + Date.now();
     //             console.log(res);
     //         });
@@ -105,16 +99,13 @@ export class ConfigManager implements OnInit {
     // }
 
     onChange(evt: any, background_name:string):void{
-        var files:FileList = evt.target.files;
-        console.log('files',files);
-        // console.log('filename', filename);
+        let files:FileList = evt.target.files;
         if(files.length){
-            var form:FormData = new FormData();
-            var file:File = files[0];
+            let form:FormData = new FormData();
+            let file:File = files[0];
             form.append('file',file);
             if(files[0].size<2000000){
                 this.uploadService.upload(form,background_name).done((res:any)=>{
-                    // this.getIcons();
                     this.background_path = this.background_path + "?" + Date.now();
                     console.log(res);
                 })

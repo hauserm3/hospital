@@ -15,7 +15,7 @@ var UploadService = (function () {
     }
     UploadService.prototype.upload = function (form, fileName) {
         return $.ajax({
-            url: 'server/upload.php?fileName=' + fileName,
+            url: 'api/upload.php?fileName=' + fileName,
             type: 'POST',
             dataType: 'json',
             data: form,

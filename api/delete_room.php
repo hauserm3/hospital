@@ -1,9 +1,7 @@
 <?php
 include 'settings.php';
-ini_set('html_errors', false);
-$method = $_SERVER['REQUEST_METHOD'];
 
-//echo $method;
+$method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST'){
     $out = new stdClass();
@@ -11,8 +9,7 @@ if($method == 'POST'){
 
     $post = json_decode(file_get_contents('php://input'),true);
     $data = json_decode(file_get_contents($ip_room_path));
-//    print_r($post["IP"] );
-//    print_r($data -> rooms);
+
     foreach ($data -> rooms as $key => $value){
         if($post["IP"] == $value -> IP && $post["ID"] == $value -> ID) unset($data -> rooms[$key]);
     }
