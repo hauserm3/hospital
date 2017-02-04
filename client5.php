@@ -172,46 +172,64 @@
           </footer>
 
       <script>
+
+
+          //TODO take jquery view references in separate classes View.  MVC structure:  controller go trough model and calling view functions
+
+
           $(document).ready(function () {
               var $data_parse = '<?php echo $room_data;?>';             // data_parse = 'api/get-room-5.php';
               var $url = '<?php echo $get_room_path;?>';                // url = 'api/get-room-5.php';
               var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
 
+              // controller
               if(window.matchMedia('(min-width: 1281px)').matches)
               {
+                  ///View
                   $('#CAUTION_ARR').removeClass( 'img_158' ).addClass( 'img_178' );
                   $('#ContactPrecautions_4').removeClass( 'img_158' ).addClass( 'img_178' );
                   $('#ContactPrecautions_5').removeClass( 'img_100' ).addClass( 'img_178' );
                   $('#HazardousMedications').removeClass( 'img_150' ).addClass( 'img_178' );
               }
 
+              // controller
               var transform = function (idBlock) {
-                  setTimeout(function() { $(idBlock).addClass('transition-scale-activated'); }, 1000);
+                  setTimeout(function() {
+                      // view
+                      $(idBlock).addClass('transition-scale-activated');
+                  }, 1000);
               };
 
               var getData = function () {
                   $.getJSON($url).done(function (res) {
+                      // controller
                       $('#content').removeClass('network-offline');
                       $('footer').removeClass('network-offline');
-                      if(res.result){model = res.result}
+                      if(res.result){model = res.result} //TODO if no result property  send error to server
                       transform('#logo');
                       transform('#logoText');
                       console.log('model', model);
 
                       $('#Date').text(model.Date);
                       if(model.RoutinePractices) {
+                          //view
                           $('#RP_image').attr('src',$icons_folder+model.RoutinePractices);
                           $('#RoutinePractices').show();
+
                           transform('#RoutinePractices');
                       }
+                      // controller
                       if(model.CautionAttention) {
                           if(model.CautionAttention.length == 1){
+                              ///view
                               $('#CAUTION_ARR').hide();
                               $('#CAUTION_SINGLE').show();
                               $('#CA_image').attr('src',$icons_folder+model.CautionAttention);
                           } else {
                               $('#CAUTION_SINGLE').hide();
                               $('#CAUTION_ARR').show();
+
+
                               model.CautionAttention.forEach(function (item,i) {
                                   $('#CA_image_'+i).attr('src',$icons_folder+item);
                               });
@@ -221,10 +239,15 @@
                       } else {
                           $('#CautionAttention').hide();
                       }
+
+                      // controller
                       if(model.ContactPrecautions && model.ContactPrecautions[0] != 'IC_000.png') {
+                          // view
                           $('#ContactPrecautions_000').hide();
                           $('#ContactPrecautions').show();
+                          // controller
                           if(model.ContactPrecautions.length == 5){
+                              // view
                               $("#ContactPrecautions_4").hide();
                               $('#ContactPrecautions_5').show();
                               model.ContactPrecautions.forEach(function (item,i) {
@@ -238,12 +261,15 @@
                               });
                           }
                           transform('#ContactPrecautions');
+                          //controller
                       } else {
+                          //view
                           $('#ContactPrecautions').hide();
                           $('#ContactPrecautions_000').show();
                           $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
                           transform('#ContactPrecautions_000');
                       }
+                      // controller
                       if(model.HazardousMedications && model.HazardousMedications[0] != 'HM_000.png'){
                           $('#HazardousMedications_000').hide();
                           $('#HazardousMedications').show();
