@@ -182,89 +182,14 @@
               var $url = '<?php echo $get_room_path;?>';                // url = 'api/get-room-5.php';
               var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
 
-              var show_redBorder = function () {
-                  $('#content').addClass('network-offline');
-                  $('footer').addClass('network-offline');
-              };
-
-              var hide_redBorder = function () {
-                  $('#content').removeClass('network-offline');
-                  $('footer').removeClass('network-offline');
-              };
-
-              var img_178_view = function () {
+              // controller
+              if(window.matchMedia('(min-width: 1281px)').matches)
+              {
+                  ///View
                   $('#CAUTION_ARR').removeClass( 'img_158' ).addClass( 'img_178' );
                   $('#ContactPrecautions_4').removeClass( 'img_158' ).addClass( 'img_178' );
                   $('#ContactPrecautions_5').removeClass( 'img_100' ).addClass( 'img_178' );
                   $('#HazardousMedications').removeClass( 'img_150' ).addClass( 'img_178' );
-              };
-
-              var RoutinePractices_view = function (model) {
-                  $('#RP_image').attr('src',$icons_folder+model.RoutinePractices);
-                  $('#RoutinePractices').show();
-              };
-
-              var CautionAttention_Single_view = function (model) {
-                  $('#CAUTION_ARR').hide();
-                  $('#CAUTION_SINGLE').show();
-                  $('#CA_image').attr('src',$icons_folder+model.CautionAttention);
-                  $('#CautionAttention').show();
-              };
-
-              var CautionAttention_view = function (model) {
-                  $('#CAUTION_SINGLE').hide();
-                  $('#CAUTION_ARR').show();
-                  model.CautionAttention.forEach(function (item,i) {
-                      $('#CA_image_'+i).attr('src',$icons_folder+item);
-                  });
-                  $('#CautionAttention').show();
-              };
-
-              var ContactPrecautions_view = function () {
-                  $('#ContactPrecautions_000').hide();
-                  $('#ContactPrecautions').show();
-              };
-              var ContactPrecautions_000_view = function () {
-                  $('#ContactPrecautions').hide();
-                  $('#ContactPrecautions_000').show();
-                  $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
-              };
-
-              var ContactPrecautions_5_view = function (model) {
-                  $("#ContactPrecautions_4").hide();
-                  $('#ContactPrecautions_5').show();
-                  model.ContactPrecautions.forEach(function (item,i) {
-                      $('#CP_5_image_'+i).attr('src',$icons_folder+item);
-                  });
-              };
-
-              var ContactPrecautions_4_view = function (model) {
-                  $("#ContactPrecautions_5").hide();
-                  $('#ContactPrecautions_4').show();
-                  model.ContactPrecautions.forEach(function (item,i) {
-                      $('#CP_image_'+i).attr('src',$icons_folder+item);
-                  });
-              };
-
-              var HazardousMedications_view = function (model) {
-                  $('#HazardousMedications_000').hide();
-                  $('#HazardousMedications').show();
-                  model.HazardousMedications.forEach(function (item,i) {
-                      $('#HM_image_'+i).attr('src',$icons_folder+item);
-                  });
-              };
-
-              var HazardousMedications_000_view = function (model) {
-                  $('#HazardousMedications').hide();
-                  $('#HazardousMedications_000').show();
-                  $('#HM_image_000').attr('src',$icons_folder+'HM_000.png');
-              };
-
-
-              // controller
-              if(window.matchMedia('(min-width: 1281px)').matches){
-                  ///View
-                  img_178_view();
               }
 
               // controller
@@ -278,9 +203,9 @@
               var getData = function () {
                   $.getJSON($url).done(function (res) {
                       // controller
-                      hide_redBorder();
+                      $('#content').removeClass('network-offline');
+                      $('footer').removeClass('network-offline');
                       if(res.result){model = res.result} //TODO if no result property  send error to server
-                      else{console.error('no result modul!')}
                       transform('#logo');
                       transform('#logoText');
                       console.log('model', model);
@@ -288,51 +213,81 @@
                       $('#Date').text(model.Date);
                       if(model.RoutinePractices) {
                           //view
-                          RoutinePractices_view(model);
+                          $('#RP_image').attr('src',$icons_folder+model.RoutinePractices);
+                          $('#RoutinePractices').show();
+
                           transform('#RoutinePractices');
                       }
                       // controller
                       if(model.CautionAttention) {
                           if(model.CautionAttention.length == 1){
                               ///view
-                              CautionAttention_Single_view(model);
+                              $('#CAUTION_ARR').hide();
+                              $('#CAUTION_SINGLE').show();
+                              $('#CA_image').attr('src',$icons_folder+model.CautionAttention);
                           } else {
-                              CautionAttention_view(model);
+                              $('#CAUTION_SINGLE').hide();
+                              $('#CAUTION_ARR').show();
+
+
+                              model.CautionAttention.forEach(function (item,i) {
+                                  $('#CA_image_'+i).attr('src',$icons_folder+item);
+                              });
                           }
+                          $('#CautionAttention').show();
                           transform('#CautionAttention');
                       } else {
                           $('#CautionAttention').hide();
                       }
+
                       // controller
                       if(model.ContactPrecautions && model.ContactPrecautions[0] != 'IC_000.png') {
                           // view
-                          ContactPrecautions_view();
+                          $('#ContactPrecautions_000').hide();
+                          $('#ContactPrecautions').show();
                           // controller
                           if(model.ContactPrecautions.length == 5){
                               // view
-                              ContactPrecautions_5_view(model);
+                              $("#ContactPrecautions_4").hide();
+                              $('#ContactPrecautions_5').show();
+                              model.ContactPrecautions.forEach(function (item,i) {
+                                  $('#CP_5_image_'+i).attr('src',$icons_folder+item);
+                              });
                           } else {
-                              ContactPrecautions_4_view(model);
+                              $("#ContactPrecautions_5").hide();
+                              $('#ContactPrecautions_4').show();
+                              model.ContactPrecautions.forEach(function (item,i) {
+                                  $('#CP_image_'+i).attr('src',$icons_folder+item);
+                              });
                           }
                           transform('#ContactPrecautions');
                           //controller
                       } else {
                           //view
-                          ContactPrecautions_000_view();
+                          $('#ContactPrecautions').hide();
+                          $('#ContactPrecautions_000').show();
+                          $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
                           transform('#ContactPrecautions_000');
                       }
                       // controller
                       if(model.HazardousMedications && model.HazardousMedications[0] != 'HM_000.png'){
-                          HazardousMedications_view(model);
+                          $('#HazardousMedications_000').hide();
+                          $('#HazardousMedications').show();
+                          model.HazardousMedications.forEach(function (item,i) {
+                              $('#HM_image_'+i).attr('src',$icons_folder+item);
+                          });
                           transform('#HazardousMedications');
                       } else {
-                          HazardousMedications_000_view(model);
+                          $('#HazardousMedications').hide();
+                          $('#HazardousMedications_000').show();
+                          $('#HM_image_000').attr('src',$icons_folder+'HM_000.png');
                           transform('#HazardousMedications_000');
                       }
                   }).fail(function (jqxhr, textStatus, error) {
                       console.error('error: ', error);
 //                      console.log('jqxhr: ', jqxhr);
-                      show_redBorder();
+                      $('#content').addClass('network-offline');
+                      $('footer').addClass('network-offline');
 //                      window.location.reload();
                   })
               };
