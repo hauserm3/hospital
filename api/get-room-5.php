@@ -1,6 +1,8 @@
 <?php
 require_once 'settings.php';
 
+
+///TODO all loading and parsing in try/catch blovk with error handling 
 $XML_timestamp = filemtime($fileXML);
 $configFile= filemtime($configJSON);
 $room_data_timestamp = filemtime($room_data_path);
@@ -11,23 +13,28 @@ include_once 'room-data-5.php';
 //if($XML_timestamp > $room_data_timestamp || $configFile > $room_data_timestamp){
 //    include_once 'room-data-5.php';
 //}
-
+//TODO try/catch parsing data 
 $indexes = json_decode(file_get_contents($ip_room_path));
 $indexes = $indexes->rooms;
 
+//TODO try/catch 
 $icons = json_decode(file_get_contents($icons_path));
 $icons = $icons->icons;
-
+//TODO try/catch 
 $room_data = json_decode(file_get_contents($room_data_path));
+
 $main_arr = $room_data -> rooms;
 
 $room_id = isset($_GET['room_id']) ? $_GET['room_id'] : 0;
 $room_ip = isset($_GET['room_ip']) ? $_GET['room_ip'] : 0;
 
+//TODO if no room_id and no $room_ip  Data missing. Send message on  screen  "Room or IP not registered by administrator "
+
 if($room_id != 0){
     $room = getDataByID($room_id, $main_arr);
 } else {
     if($room_ip == 0) $room_ip = $_SERVER['REMOTE_ADDR'];
+	
     $room = getDataByID(getRoomIdByIP($room_ip, $indexes), $main_arr);
 }
 
