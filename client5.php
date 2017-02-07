@@ -181,6 +181,19 @@
               var $data_parse = '<?php echo $room_data;?>';             // data_parse = 'api/get-room-5.php';
               var $url = '<?php echo $get_room_path;?>';                // url = 'api/get-room-5.php';
               var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
+              var isOnline,
+                  isStarted;
+              var isRoutinePractices,
+                  isCautionAttention,
+                  isCautionAttention_Single,
+                  isCautionAttention_Double,
+                  isContactPrecautions,
+                  isContactPrecautions_4,
+                  isContactPrecautions_5,
+                  isContactPrecautions_000,
+                  isHazardousMedications,
+                  isHazardousMedications_000,
+                  dateModel;
 
               var show_redBorder = function () {
                   $('#content').addClass('network-offline');
@@ -200,37 +213,72 @@
               };
 
               var RoutinePractices_view = function (model) {
+                  if(isRoutinePractices) return;
+                  isRoutinePractices = true;
+                  console.log('RoutinePractices_view');
                   $('#RP_image').attr('src',$icons_folder+model.RoutinePractices);
                   $('#RoutinePractices').show();
               };
 
-              var CautionAttention_Single_view = function (model) {
-                  $('#CAUTION_ARR').hide();
-                  $('#CAUTION_SINGLE').show();
-                  $('#CA_image').attr('src',$icons_folder+model.CautionAttention);
+              var show_CautionAttention_view = function () {
+                  if(isCautionAttention) return;
+                  isCautionAttention = true;
+                  console.log('show_CautionAttention_view');
                   $('#CautionAttention').show();
               };
 
-              var CautionAttention_view = function (model) {
+              var hide_CautionAttention_view = function () {
+                  if(!isCautionAttention) return;
+                  isCautionAttention = false;
+                  isCautionAttention_Single = false;
+                  isCautionAttention_Double = false;
+                  console.log('hide_CautionAttention_view');
+                  $('#CautionAttention').hide();
+              };
+
+              var CautionAttention_Single_view = function (model) {
+                  if(isCautionAttention_Single) return;
+                  isCautionAttention_Single = true;
+                  console.log('CautionAttention_Single_view');
+                  $('#CAUTION_ARR').hide();
+                  $('#CAUTION_SINGLE').show();
+                  $('#CA_image').attr('src',$icons_folder+model.CautionAttention);
+              };
+
+              var CautionAttention_Double_view = function (model) {
+                  if(isCautionAttention_Double) return;
+                  isCautionAttention_Double = true;
+                  console.log('CautionAttention_Double_view');
                   $('#CAUTION_SINGLE').hide();
                   $('#CAUTION_ARR').show();
                   model.CautionAttention.forEach(function (item,i) {
                       $('#CA_image_'+i).attr('src',$icons_folder+item);
                   });
-                  $('#CautionAttention').show();
               };
 
               var ContactPrecautions_view = function () {
+                  if(isContactPrecautions) return;
+                  isContactPrecautions = true;
+                  isContactPrecautions_000 = false;
+                  console.log('ContactPrecautions_view');
                   $('#ContactPrecautions_000').hide();
                   $('#ContactPrecautions').show();
               };
               var ContactPrecautions_000_view = function () {
+                  if(isContactPrecautions_000) return;
+                  isContactPrecautions_000 = true;
+                  isContactPrecautions = false;
+                  console.log('ContactPrecautions_000_view');
                   $('#ContactPrecautions').hide();
                   $('#ContactPrecautions_000').show();
                   $('#CP_image_000').attr('src',$icons_folder+'IC_000.png');
               };
 
               var ContactPrecautions_5_view = function (model) {
+                  if(isContactPrecautions_5) return;
+                  isContactPrecautions_5 = true;
+                  isContactPrecautions_4 = false;
+                  console.log('ContactPrecautions_5_view');
                   $("#ContactPrecautions_4").hide();
                   $('#ContactPrecautions_5').show();
                   model.ContactPrecautions.forEach(function (item,i) {
@@ -239,6 +287,10 @@
               };
 
               var ContactPrecautions_4_view = function (model) {
+                  if(isContactPrecautions_4) return;
+                  isContactPrecautions_4 = true;
+                  isContactPrecautions_5 = false;
+                  console.log('ContactPrecautions_4_view');
                   $("#ContactPrecautions_5").hide();
                   $('#ContactPrecautions_4').show();
                   model.ContactPrecautions.forEach(function (item,i) {
@@ -247,6 +299,10 @@
               };
 
               var HazardousMedications_view = function (model) {
+                  if(isHazardousMedications) return;
+                  isHazardousMedications = true;
+                  isHazardousMedications_000 = false;
+                  console.log('HazardousMedications_view');
                   $('#HazardousMedications_000').hide();
                   $('#HazardousMedications').show();
                   model.HazardousMedications.forEach(function (item,i) {
@@ -255,11 +311,43 @@
               };
 
               var HazardousMedications_000_view = function (model) {
+                  if(isHazardousMedications_000) return;
+                  isHazardousMedications_000 = true;
+                  isHazardousMedications = false;
+                  console.log('HazardousMedications_000_view');
                   $('#HazardousMedications').hide();
                   $('#HazardousMedications_000').show();
                   $('#HM_image_000').attr('src',$icons_folder+'HM_000.png');
               };
 
+              var showDate_view = function (model) {
+                  if(dateModel !== model.Date){
+                      dateModel = model.Date;
+                      $('#Date').text(model.Date);
+                  }
+              };
+
+              var putOffline = function () {
+                  if(!isOnline) return;
+                  isOnline = false;
+                  show_redBorder();
+                  console.log('isOffline');
+              };
+
+              var putOnline = function () {
+                  if(isOnline) return;
+                  isOnline = true;
+                  hide_redBorder();
+                  console.log('isOnline');
+              };
+
+              var reportError = function (error) {
+                  $.post("api/error-report.php",error);
+              };
+
+              var showError = function (error) {
+                  allert(error.screenMessage);
+              };
 
               // controller
               if(window.matchMedia('(min-width: 1281px)').matches){
@@ -275,33 +363,62 @@
                   }, 1000);
               };
 
+              var startApp = function () {
+                  if(isStarted) return;
+                  isStarted = true;
+                  transform('#logo');
+                  transform('#logoText');
+                  transform('#RoutinePractices');
+                  if(isCautionAttention) transform('#CautionAttention');
+                  if(isContactPrecautions) transform('#ContactPrecautions');
+                  if(isContactPrecautions_000) transform('#ContactPrecautions_000');
+                  if(isHazardousMedications) transform('#HazardousMedications');
+                  if(isHazardousMedications_000) transform('#HazardousMedications_000');
+              };
+
               var getData = function () {
                   $.getJSON($url).done(function (res) {
                       // controller
-                      hide_redBorder();
+                      putOnline();
+
                       if(res.result){model = res.result} //TODO if no result property  send error to server
-                      else{console.error('no result modul!')}
-                      transform('#logo');
-                      transform('#logoText');
+                      else{
+                          console.error('no result model!');
+                          putOffline();
+                          var error = {
+                              id: 300,
+                              message: "no property result",
+                              screenMessage: "SOME MESSAGE",
+                              body: JSON.stringify(res)
+                          };
+                          reportError(error);
+                          showError(error);
+                          return;
+                      }
                       console.log('model', model);
 
-                      $('#Date').text(model.Date);
+                      showDate_view(model);
                       if(model.RoutinePractices) {
                           //view
                           RoutinePractices_view(model);
-                          transform('#RoutinePractices');
+                      } else {
+                          isRoutinePractices = false;
+                          showError({
+                              id:700,
+                              screenMessage: "NO RoutinePractices"
+                          })
                       }
                       // controller
                       if(model.CautionAttention) {
+                          show_CautionAttention_view();
                           if(model.CautionAttention.length == 1){
                               ///view
                               CautionAttention_Single_view(model);
                           } else {
-                              CautionAttention_view(model);
+                              CautionAttention_Double_view(model);
                           }
-                          transform('#CautionAttention');
                       } else {
-                          $('#CautionAttention').hide();
+                          hide_CautionAttention_view();
                       }
                       // controller
                       if(model.ContactPrecautions && model.ContactPrecautions[0] != 'IC_000.png') {
@@ -314,25 +431,22 @@
                           } else {
                               ContactPrecautions_4_view(model);
                           }
-                          transform('#ContactPrecautions');
                           //controller
                       } else {
                           //view
                           ContactPrecautions_000_view();
-                          transform('#ContactPrecautions_000');
                       }
                       // controller
                       if(model.HazardousMedications && model.HazardousMedications[0] != 'HM_000.png'){
                           HazardousMedications_view(model);
-                          transform('#HazardousMedications');
                       } else {
                           HazardousMedications_000_view(model);
-                          transform('#HazardousMedications_000');
                       }
+                      startApp();
                   }).fail(function (jqxhr, textStatus, error) {
                       console.error('error: ', error);
 //                      console.log('jqxhr: ', jqxhr);
-                      show_redBorder();
+                      putOffline();
 //                      window.location.reload();
                   })
               };

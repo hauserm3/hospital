@@ -3,14 +3,21 @@
 ini_set('html_errors', false);
 date_default_timezone_set('America/Toronto');
 ini_set("log_errors", 1);
-ini_set("error_log", "api/data/error.log");
+ini_set("error_log", "data/errors.log");
+//ini_set("error_log", "data/errors_".date("F").".log");
+//$errors_app = "data/errors_app.log";
 //error_log( "Hello, errors!" );
+//error_log("Error log is work!", 1,"hauserm555@gmail.com");
+
+//error log имя месяца для файла
 
 $configJSON = "../config.json";
 
 if(file_exists($configJSON)){
+    //It does not refer to a XML file from the client5.php
     $config = json_decode(file_get_contents($configJSON));
     $fileXML = $config->fileXML;
+    define("FILE_XML",$fileXML);
 }
 
 $get_room_path = 'api/get-room-5.php';

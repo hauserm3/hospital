@@ -52,7 +52,17 @@ function saveRooms($rooms_arr,$file_rooms){
     file_put_contents($file_rooms, json_encode($rooms));
 }
 
-$rowData = getDataXML($fileXML);
+try{
+    if(file_exists($fileXML)){
+        $rowData = getDataXML($fileXML);
+    } else {
+        throw new Exception('XML file not found!!');
+    }
+}catch (Exception $e){
+    error_log( $e->getMessage() );
+}
+
+//$rowData = getDataXML($fileXML);
 
 saveRooms(parseRooms($rowData),$room_data_path);
 

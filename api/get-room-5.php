@@ -1,9 +1,19 @@
 <?php
 require_once 'settings.php';
 
+///TODO all loading and parsing in try/catch blovk with error handling
+try{
+    if(file_exists(FILE_XML)){
+        $XML_timestamp = filemtime(FILE_XML);
+    } else {
+        throw new Exception('XML file not found!!');
+    }
+}catch (Exception $e){
+    error_log($e->getMessage());
+//    error_log( $e->getMessage(), 3, $errors_app );
+}
 
-///TODO all loading and parsing in try/catch blovk with error handling 
-$XML_timestamp = filemtime($fileXML);
+//$XML_timestamp = filemtime($fileXML);
 $configFile= filemtime($configJSON);
 $room_data_timestamp = filemtime($room_data_path);
 
