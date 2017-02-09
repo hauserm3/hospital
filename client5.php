@@ -178,7 +178,6 @@
 
 
           $(document).ready(function () {
-              var $data_parse = '<?php echo $room_data;?>';             // data_parse = 'api/get-room-5.php';
               var $url = '<?php echo $get_room_path;?>';                // url = 'api/get-room-5.php';
               var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
               var isOnline,
@@ -382,7 +381,7 @@
                       putOnline();
 
                       if(res.result){model = res.result} //TODO if no result property  send error to server
-                      else{
+                      else{ //3
                           console.error('no result model!');
                           putOffline();
                           var error = {
@@ -401,7 +400,7 @@
                       if(model.RoutinePractices) {
                           //view
                           RoutinePractices_view(model);
-                      } else {
+                      } else { //4
                           isRoutinePractices = false;
                           showError({
                               id:700,
@@ -443,7 +442,7 @@
                           HazardousMedications_000_view(model);
                       }
                       startApp();
-                  }).fail(function (jqxhr, textStatus, error) {
+                  }).fail(function (jqxhr, textStatus, error) { //2
                       console.error('error: ', error);
 //                      console.log('jqxhr: ', jqxhr);
                       putOffline();

@@ -9,7 +9,7 @@ function getDataXML($filepath){
     return $out["ROOM"];
 }
 
-function parseRooms($rooms_arr){
+function parseRooms($rooms_arr){ //6-12
     $rooms = array();
     foreach ($rooms_arr as $value){
         $room = new stdClass();
@@ -24,6 +24,8 @@ function parseRooms($rooms_arr){
             } else {
                 $room -> CautionAttention = (array) $value['CautionAttention']['Image'];
             }
+        } else {
+
         }
         if($value['HazardousMedications']['Image'] != 'FALSE'){
             if(is_array($value['HazardousMedications']['Image'])){
@@ -51,19 +53,19 @@ function saveRooms($rooms_arr,$file_rooms){
 //    echo json_encode($rooms);
     file_put_contents($file_rooms, json_encode($rooms));
 }
-
+//1
 try{
-    if(file_exists($fileXML)){
-        $rowData = getDataXML($fileXML);
+    if(file_exists(FILE_XML)){
+        $rowData = getDataXML(FILE_XML);
+        $parsedData = parseRooms($rowData);
+        saveRooms($parsedData,$rooms_path);
     } else {
-        throw new Exception('XML file not found!!');
+        throw new Exception('APP XML file not found!! it is impossible to parse!!');
     }
 }catch (Exception $e){
     error_log( $e->getMessage() );
 }
 
 //$rowData = getDataXML($fileXML);
-
-saveRooms(parseRooms($rowData),$room_data_path);
 
 ?>

@@ -7,8 +7,8 @@ if($method == 'GET'){
     $id_room = array();
     $room_id = array();
 
-    $room_data = json_decode(file_get_contents($room_data_path));
-    foreach ($room_data -> rooms as $value){
+    $rooms = json_decode(file_get_contents($rooms_path));
+    foreach ($rooms -> rooms as $value){
         $id_room[] = $value -> ID;
     }
 
