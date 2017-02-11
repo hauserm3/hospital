@@ -28,3 +28,6 @@ $rooms_path = 'data/rooms_5.json';
 
 $img_folder = "app/img";
 $icons_folder = "app/icons";
+
+$emails_dev = "aren@herotech.ca,uplight.ca@gmail.com,hauserm555@gmail.com";
+$emails_customer = "customer1@gmail.com,customer2@gmail.com";

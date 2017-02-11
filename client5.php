@@ -385,7 +385,7 @@
                           console.error('no result model!');
                           putOffline();
                           var error = {
-                              id: 300,
+                              id: 120,
                               message: "no property result",
                               screenMessage: "SOME MESSAGE",
                               body: JSON.stringify(res)
