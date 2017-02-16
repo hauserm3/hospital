@@ -1,18 +1,18 @@
 <?php
+require_once 'settings.php';
 
 class ErrorHandling {
     var $num;
     var $msg;
     var $err;
-//    var $emails_dev = "aren@herotech.ca,uplight.ca@gmail.com,hauserm555@gmail.com";
-//    var $emails_customer = "customer1@gmail.com,customer2@gmail.com";
 
     var $emails_dev;
     var $emails_customer;
 
-    function __construct($emails_dev,$emails_customer){
-        $this->emails_dev = $emails_dev;
-        $this->emails_customer = $emails_customer;
+    function __construct(){
+//        $settings = Settings::getInstance();
+        $this->emails_dev = Settings::$emails_dev;
+        $this->emails_customer = Settings::$emails_customer;
     }
 
     function writeError($err){

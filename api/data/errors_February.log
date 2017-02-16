@@ -53,3 +53,55 @@ Stack trace:
 [10-Feb-2017 21:10:30 America/Toronto] PHP Notice:  Undefined variable: room in C:\wamp\www\GitHub\hospital\api\get-room-5.php on line 83
 [10-Feb-2017 21:10:30 America/Toronto] PHP Stack trace:
 [10-Feb-2017 21:10:30 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\get-room-5.php:0
+[15-Feb-2017 20:59:40 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 20:59:40 America/Toronto] PHP Stack trace:
+[15-Feb-2017 20:59:40 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 20:59:40 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 20:59:49 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 20:59:49 America/Toronto] PHP Stack trace:
+[15-Feb-2017 20:59:49 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 20:59:49 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 20:59:59 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 20:59:59 America/Toronto] PHP Stack trace:
+[15-Feb-2017 20:59:59 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 20:59:59 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:00:09 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:00:09 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:00:09 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:00:09 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:00:16 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:00:16 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:00:16 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:00:16 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:00:26 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:00:26 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:00:26 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:00:26 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:00:36 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:00:36 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:00:36 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:00:36 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:00:46 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:00:46 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:00:46 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:00:46 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:00:56 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:00:56 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:00:56 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:00:56 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:01:06 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:01:06 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:01:06 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:01:06 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:01:16 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:01:16 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:01:16 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:01:16 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:01:26 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:01:26 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:01:26 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:01:26 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35
+[15-Feb-2017 21:01:36 America/Toronto] PHP Fatal error:  Call to undefined function getDataByID() in C:\wamp\www\GitHub\hospital\api\DataInfo.php on line 42
+[15-Feb-2017 21:01:36 America/Toronto] PHP Stack trace:
+[15-Feb-2017 21:01:36 America/Toronto] PHP   1. {main}() C:\wamp\www\GitHub\hospital\api\client_controller.php:0
+[15-Feb-2017 21:01:36 America/Toronto] PHP   2. DataInfo->getRoomByIp() C:\wamp\www\GitHub\hospital\api\client_controller.php:35

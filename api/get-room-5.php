@@ -2,8 +2,15 @@
 require_once 'settings.php';
 require_once 'ErrorHandling.php';
 
-$errHandling = new ErrorHandling($emails_dev,$emails_customer);
+//classes
+//ifFileUpToDate() - 1 reurn boolean вниз
+//checkTimestamp() - 2 reurn boolean
+//detectRoomID
+//ParsRoomIDDAta
+//OutPutDate
 
+
+$errHandling = new ErrorHandling($emails_dev,$emails_customer);
 ///TODO all loading and parsing in try/catch block with error handling
 //1
 try{
@@ -20,7 +27,6 @@ try{
 }
 $configFile= filemtime($configJSON);
 $rooms_path_timestamp = filemtime($rooms_path);
-
 // only for testing
 //include_once 'room-data-5.php';
 // for production
@@ -38,7 +44,6 @@ try{
 }catch (Exception $e){
     $errHandling->writeError($e->getMessage());
 }
-
 //TODO try/catch
 //14
 try{
@@ -50,10 +55,8 @@ try{
 }catch (Exception $e){
     $errHandling->writeError($e->getMessage());
 }
-
 $room_id = isset($_GET['room_id']) ? $_GET['room_id'] : 0;
 $room_ip = isset($_GET['room_ip']) ? $_GET['room_ip'] : 0;
-
 //TODO if no room_id and no $room_ip  Data missing. Send message on  screen  "Room or IP not registered by administrator "
 //15 //16
 try{
@@ -79,27 +82,24 @@ try{
 //    $room_id = 1;
 //    $room = getDataByID($room_id, $main_arr);
 //}
-
 function sendResponse($room){
     $out = new stdClass();
     $out->result = $room;
-
     header('Content-type: application/json');
     echo json_encode($out);
 }
-
 function getDataByID($room_id, $data){
     foreach ($data as $value){
         if($value->ID == $room_id) return $value;
     }
     return 0;
 }
-
 function getRoomIdByIP($room_ip, $arr){
     foreach ($arr as $value){
         if($value->IP == $room_ip) return $value->ID;
     }
     return 0;
 }
+
 
 ?>

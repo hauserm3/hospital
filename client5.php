@@ -178,7 +178,8 @@
 
 
           $(document).ready(function () {
-              var $url = '<?php echo $get_room_path;?>';                // url = 'api/get-room-5.php';
+//              var $url = '<?php //echo $get_room_path;?>//';                // url = 'api/get-room-5.php';
+              var $url = '<?php echo Settings::$client_controller;?>';                // url = 'api/client_controller.php';
               var $icons_folder = '<?php echo $icons_folder;?>' + '/';  // icons_folder = 'app/icons'
               var isOnline,
                   isStarted;

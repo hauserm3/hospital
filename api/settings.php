@@ -29,5 +29,31 @@ $rooms_path = 'data/rooms_5.json';
 $img_folder = "app/img";
 $icons_folder = "app/icons";
 
-$emails_dev = "aren@herotech.ca,uplight.ca@gmail.com,hauserm555@gmail.com";
-$emails_customer = "customer1@gmail.com,customer2@gmail.com";
+//$emails_dev = "aren@herotech.ca,uplight.ca@gmail.com,hauserm555@gmail.com";
+//$emails_customer = "customer1@gmail.com,customer2@gmail.com";
+
+class Settings{
+//    var $emails_dev = "aren@herotech.ca,uplight.ca@gmail.com,hauserm555@gmail.com";
+//    var $emails_customer = "customer1@gmail.com,customer2@gmail.com";
+    public static $configJSON = "../config.json";
+    public static $client_controller = 'api/client_controller.php';
+
+    public static $ip_room_path = 'data/ip_room.json';
+    public static $icons_path = 'data/icons5.json';
+    public static $rooms_path = 'data/rooms_5.json';
+
+    public static $img_folder = "app/img";
+    public static $icons_folder = "app/icons";
+
+    public static $emails_dev = "aren@herotech.ca,uplight.ca@gmail.com,hauserm555@gmail.com";
+    public static $emails_customer = "customer1@gmail.com,customer2@gmail.com";
+
+    private static $instance;           // object instance
+    private function __construct(){;}   //constructor block
+    private function __clone(){;}       //cloning block
+    private function __wakeup(){;}      //unserialize block
+
+    public static function getInstance(){
+        return !isset(self::$instance) ? self::$instance = new self() : self::$instance;
+    }
+}
