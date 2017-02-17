@@ -2,7 +2,7 @@
 include 'settings.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$pathFile = __DIR__."/../".$icons_folder."/";
+$pathFile = __DIR__."/../".Settings::$icons_folder."/";
 
 if($method == 'POST'){
     $out = new stdClass();

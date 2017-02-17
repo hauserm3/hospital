@@ -6,7 +6,7 @@ $root = __DIR__."/../";
 $file = $_FILES["file"];
 $fileName = $_GET['fileName'];
 
-$fileName == "background.png" ? $folder = $img_folder : $folder= $icons_folder;
+$fileName == "background.png" ? $folder = Settings::$img_folder : $folder= Settings::$icons_folder;
 
 if(isset($_GET['api'])){
 	$api= explode('/',$_GET['api']);

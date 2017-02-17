@@ -147,7 +147,7 @@ export class VOSettings {
     static delete_room_path: string = 'api/delete_room.php';
     static delete_icon_path: string = 'api/delete_icon.php';
 
-    static get_icons_path: string = 'api/get_icons3.php';
+    static get_icons_path: string = 'api/get_icons.php';
 }
 
 export class VOResult {

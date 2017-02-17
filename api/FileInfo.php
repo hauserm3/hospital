@@ -8,7 +8,7 @@ class FileInfo{
     function __construct(){
         $this->errHandling = new ErrorHandling();
     }
-
+//1
     function getTimestamp($filepath){
         try{
             if(file_exists($filepath)){

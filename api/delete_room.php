@@ -8,7 +8,7 @@ if($method == 'POST'){
     $arr = array();
 
     $post = json_decode(file_get_contents('php://input'),true);
-    $data = json_decode(file_get_contents($ip_room_path));
+    $data = json_decode(file_get_contents(Settings::$ip_room_path));
 
     foreach ($data -> rooms as $key => $value){
         if($post["IP"] == $value -> IP && $post["ID"] == $value -> ID) unset($data -> rooms[$key]);
@@ -18,7 +18,7 @@ if($method == 'POST'){
     }
     $data -> rooms = $arr;
 
-    $out -> resalt = file_put_contents($ip_room_path, json_encode($data));
+    $out -> resalt = file_put_contents(Settings::$ip_room_path, json_encode($data));
     if($out->resalt) $out->success = 'success';
 }
 

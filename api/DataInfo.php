@@ -10,7 +10,7 @@ class DataInfo{
         try{
             $indexes = json_decode(file_get_contents($file_path));
             if(!$indexes){
-                $this->errHandling->createError(602,$file_path.' - empty file!!!');
+                $this->errHandling->createError(602,$file_path.' - empty file!!!'); //13 //14
                 return 0;
             } else {
                 $indexes = $indexes->rooms;
@@ -24,7 +24,7 @@ class DataInfo{
     function getRoomById($room_id,$main_arr){
         try{
             $room = $this->getDataByID($room_id, $main_arr);
-            if(!$room) $this->errHandling->createError(702,'Data missing! Room ID('.$room_id.') not registered by administrator!!!');
+            if(!$room) $this->errHandling->createError(702,'Data missing! Room ID('.$room_id.') not registered by administrator!!!'); //15
             return $room;
         } catch (Exception $e){
             $this->errHandling->writeError($e->getMessage());
@@ -39,7 +39,7 @@ class DataInfo{
                 if(!$room) $this->errHandling->createError(704,'Data missing! Room('.$room_id.') not in parsed file!!!'); //17
                 return $room;
             }else{
-                $this->errHandling->createError(703,'Data missing! Room IP('.$room_ip.') not registered by administrator!!!');
+                $this->errHandling->createError(703,'Data missing! Room IP('.$room_ip.') not registered by administrator!!!'); //16
             }
         }catch (Exception $e){
             $this->errHandling->writeError($e->getMessage());

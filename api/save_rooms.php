@@ -7,12 +7,12 @@ if($method == 'GET'){
     $id_room = array();
     $room_id = array();
 
-    $rooms = json_decode(file_get_contents($rooms_path));
+    $rooms = json_decode(file_get_contents(Settings::$rooms_path));
     foreach ($rooms -> rooms as $value){
         $id_room[] = $value -> ID;
     }
 
-    $room_ip_id = json_decode(file_get_contents($ip_room_path));
+    $room_ip_id = json_decode(file_get_contents(Settings::$ip_room_path));
     foreach ($room_ip_id -> rooms as $value){
         $room_id[] = $value -> ID;
     }
@@ -34,7 +34,7 @@ if($method == 'GET'){
 
     $post = json_decode(file_get_contents('php://input'),true);
 
-    $out -> resalt = file_put_contents($ip_room_path, json_encode($post));
+    $out -> resalt = file_put_contents(Settings::$ip_room_path, json_encode($post));
 
     if($out->resalt) $out->success = 'success';
 }

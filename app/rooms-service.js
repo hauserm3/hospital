@@ -134,7 +134,7 @@ var VOSettings = (function () {
     VOSettings.save_icons_path = 'api/save_icons.php'; // deprecated ???
     VOSettings.delete_room_path = 'api/delete_room.php';
     VOSettings.delete_icon_path = 'api/delete_icon.php';
-    VOSettings.get_icons_path = 'api/get_icons3.php';
+    VOSettings.get_icons_path = 'api/get_icons.php';
     return VOSettings;
 }());
 exports.VOSettings = VOSettings;
