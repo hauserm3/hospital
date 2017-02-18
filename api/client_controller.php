@@ -11,13 +11,11 @@ $fileInfo = new FileInfo();
 $dataInfo = new DataInfo();
 $parser = new Parser();
 
-//$XML_timestamp = $fileInfo->getTimestamp(FILE_XML);
 $XML_timestamp = $fileInfo->getTimestamp(Settings::getXMLPath());
 $configFile= filemtime(Settings::$configJSON);
 $rooms_path_timestamp = filemtime(Settings::$rooms_path);
 
 if($fileInfo->checkFileUpdate($XML_timestamp,$configFile,$rooms_path_timestamp)){
-//    $rowData = $parser->getDataXML(FILE_XML);
     $rowData = $parser->getDataXML(Settings::getXMLPath());
     $parsedData = $parser->parseRooms($rowData);
     $parser->saveRooms($parsedData,Settings::$rooms_path);
